@@ -1,0 +1,275 @@
+{
+    "global": {
+        "check_for_updates_on_startup": false,
+        "show_in_menu_bar": false
+    },
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "left_control(tap) => escape",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [
+                                    {
+                                        "hold_down_milliseconds": 200,
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Disable the accidental keystroke prevention of Caps Lock",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "hold_down_milliseconds": 100,
+                                        "key_code": "caps_lock"
+                                    },
+                                    { "key_code": "vk_none" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_shift(tap tap) => caps_lock",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "left_shift pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_delayed_action_delay_milliseconds": 400 },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "left_shift pressed",
+                                            "value": 1
+                                        }
+                                    },
+                                    { "key_code": "left_shift" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "left_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "left_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "section sign (§) => backtick (`) and plus minus (±) => tilde (~)",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "non_us_backslash" },
+                                "to": [{ "key_code": "grave_accent_and_tilde" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_shift + right_shift => caps_lock",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "caps_lock(once) => escape, caps_lock(hold) => left_ctrl",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [
+                                    {
+                                        "hold_down_milliseconds": 200,
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 45086,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true,
+                    "simple_modifications": [
+                        {
+                            "from": { "pointing_button": "button4" },
+                            "to": [{ "key_code": "mission_control" }]
+                        },
+                        {
+                            "from": { "pointing_button": "button5" },
+                            "to": [{ "key_code": "mission_control" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 694,
+                        "vendor_id": 13364
+                    },
+                    "ignore": false
+                },
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "simple_modifications": [
+                        {
+                            "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
+                            "to": [{ "key_code": "caps_lock" }]
+                        },
+                        {
+                            "from": { "key_code": "escape" },
+                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 50479,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "vendor_id": 13
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 61664,
+                        "vendor_id": 13
+                    },
+                    "ignore": true
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "left_control" }]
+                },
+                {
+                    "from": { "key_code": "left_control" },
+                    "to": [{ "key_code": "caps_lock" }]
+                }
+            ],
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
