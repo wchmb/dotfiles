@@ -1,0 +1,24 @@
+style:
+  tag:
+    color: cyan
+    width_percentage: 10 # column width relative to the terminal window
+    min_width: 15        # minimum column width
+  comment:
+    color: yellow
+    width_percentage: 40
+    min_width: 70
+  snippet:
+    color: white
+
+finder:
+  command: fzf               # equivalent to --finder option
+  overrides: --height=15     # overrides when selecting snippets 
+  overrides_var: --height=15 # overrides when selecting argument values 
+
+cheats:
+  paths:
+   - ~/.local/share/navi/cheats
+
+shell:
+  command: zsh        # for shell out
+  finder_command: zsh # for fzf's internals
