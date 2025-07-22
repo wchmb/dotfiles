@@ -1,0 +1,7 @@
+[user]
+	name = Alejandro Blasco
+	email = alebdm@icloud.com
+[core]
+	editor = vim
+[commit]
+	template = /Users/alejandro/.gitmessage
