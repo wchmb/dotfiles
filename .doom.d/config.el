@@ -28,16 +28,18 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-;;(setq doom-font (font-spec :family "Source Code Pro" :size 18 :weight 'regular)
-;;       doom-variable-pitch-font (font-spec :family "Free Sans" :size 13))
-;;(setq doom-font (font-spec :family "Comic Code" :size 18 :weight 'regular)
-;;      doom-variable-pitch-font (font-spec :family "Free Sans" :size 15))
-;; Protesilaos custom Iosevka font :) https://github.com/protesilaos/iosevka-comfy
-;; (setq doom-font (font-spec :family "Iosevka Comfy" :size 21 :weight 'regular)
-;;      doom-variable-pitch-font (font-spec :family "Free Sans" :size 15))
-(setq doom-font                (font-spec :family "SF Mono" :size 14 :weight 'regular) ; Default font
-      doom-variable-pitch-font (font-spec :family "SF Mono" :size 5)                   ; For variable-pitch text a.k.a non-monospace
-      doom-serif-font          (font-spec :family "SF Mono" :size 5 :weight 'regular)) ; For fixed-pitch text a.k.a monospace
+(setq doom-font (font-spec
+                 :family "SF Mono"
+                 :size 14
+                 :weight 'regular) ; Default font
+      doom-variable-pitch-font (font-spec
+                                :family "American Typewriter"
+                                :size 14
+                                :weight 'regular) ; For variable-pitch text a.k.a non-monospace
+      doom-serif-font (font-spec
+                       :family "SF Mono"
+                       :size 14
+                       :weight 'ultra-light)) ; For fixed-pitch text a.k.a monospace
 
 ;; How many steps to in/decrease font size on `doom/increase-font-size'
 (setq doom-font-increment 1)
@@ -252,6 +254,31 @@
 (after! elfeed
   (setq! elfeed-search-filter "@1-week-ago +unread -rust -youtube -news -chatty")
   (add-hook! 'elfeed-search-mode-hook #'elfeed-update)) ; Update feeds when opening
+
+(after! mu4e
+  (setq mu4e-update-interval 300) ; Automatic fetching
+  (setq sendmail-program (executable-find "msmtp")
+        send-mail-function #'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function #'message-send-mail-with-sendmail)
+  (set-email-account! "icloud"
+    '((user-full-name         . "Alejandro Blasco")
+      (smtpmail-smtp-user     . "alebdm@icloud") ; Required for sending mail
+      (mu4e-compose-signature . "\nAlejandro\nalebdm@icloud.com")
+      (mu4e-sent-folder       . "/icloud/Sent Messages")
+      (mu4e-trash-folder      . "/icloud/Deleted Messages")
+      (mu4e-drafts-folder     . "/icloud/Drafts")
+      (mu4e-refile-folder     . "/icloud/Archive"))
+   t)
+  (add-to-list 'mu4e-bookmarks
+               '("maildir:/icloud/INBOX" "Inbox" ?i) t)
+  (add-hook 'mu4e-compose-mode-hook
+            (lambda ()
+              (save-excursion (message-add-header "Cc:\n"))
+              (save-excursion (message-add-header "Bcc:\n")))))
+
+
 
 ;; (use-package aider
 ;;   :config

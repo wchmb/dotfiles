@@ -48,6 +48,7 @@
 ;(package! builtin-package :disable t)
 ;; TODO Restart Emacs and try again, reply after https://github.com/doomemacs/doomemacs/issues/8263#issuecomment-2703366067
 ;;(package! solaire-mode :disable t)
+(package! mu4e-alert :disable t) ; Dont notify new emails
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe

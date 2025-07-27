@@ -1,0 +1,27 @@
+IMAPAccount icloud
+Host imap.mail.me.com
+User alebdm
+PassCmd "security find-generic-password -s mu4e-icloud -a alebdm -w"
+Port 993
+TLSType IMAPS
+TLSVersions +1.3
+AuthMechs PLAIN
+SystemCertificates no
+CertificateFile /opt/homebrew/etc/openssl@3/cert.pem
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+SubFolders Verbatim
+Path ~/.maildir/icloud/
+Inbox ~/.maildir/icloud/INBOX
+
+Channel icloud
+Far :icloud-remote:
+Near :icloud-local:
+Patterns *
+Create Near
+Sync All
+Expunge Both
+SyncState *
