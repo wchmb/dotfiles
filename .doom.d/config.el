@@ -29,8 +29,8 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 (setq! doom-font (font-spec :family "SF Mono" :size 14 :weight 'regular) ; Default font
-       doom-variable-pitch-font (font-spec :family "American Typewriter" :size 14 :weight 'regular) ; For variable-pitch text a.k.a non-monospace
-       doom-serif-font (font-spec :family "SF Mono" :size 14 :weight 'ultra-light)) ; For fixed-pitch text a.k.a monospace
+       doom-variable-pitch-font (font-spec :family "American Typewriter" :size 14 :weight 'regular) ; variable-pitch font (non-monospace)
+       doom-serif-font (font-spec :family "SF Mono" :size 14 :weight 'ultra-light)) ; fixed-pitch font (monospace)
 
 ;; How many steps to in/decrease font size on `doom/increase-font-size'
 (setq! doom-font-increment 1)
@@ -42,8 +42,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-one)
-(load-theme 'doom-one t)
+(setq doom-theme 'doom-one)
+;(load-theme 'doom-one t)
 
 ;;(use-package! emacs
 ;;  :init
@@ -216,12 +216,22 @@
          org-modern-priority '((?A . "🔥🔥🔥")
                                (?B . "🔥🔥")
                                (?C . "🔥"))
+         org-modern-progress nil
          org-modern-list nil
          org-modern-checkbox nil
+         org-modern-horizontal-rule nil
          org-modern-todo nil
          org-modern-tag nil
          org-modern-block-name nil
          org-modern-keyword nil))
+
+(after! org-appear
+  (setq! org-appear-autolinks 'just-brackets)) ; Show links with brackets around them. Hide link target
+
+(after! org-download
+  (add-hook! 'dired-mode-hook 'org-download-enable)
+  (setq! org-download-image-dir "~/org/pics/"
+         org-download-screenshot-method "screencapture -i %s"))
 
 (after! gptel
   (setq! gptel-model 'gemini-2.5-pro-exp-03-25
