@@ -220,9 +220,13 @@
 (after! man
   (setq Man-notify-method 'aggressive))
 
-;; Display images
 (after! org
-  (setq org-startup-with-inline-images t))
+  (setq org-startup-with-inline-images t) ; Display images
+  ;; Some faces I like
+  (set-face-attribute 'org-block-begin-line nil
+                      :background (doom-color 'bg))
+  (set-face-attribute 'org-block-end-line nil
+                      :background (doom-color 'bg)))
 
 ;; Pretty org
 (after! org-modern
@@ -277,8 +281,6 @@
             (lambda ()
               (save-excursion (message-add-header "Cc:\n"))
               (save-excursion (message-add-header "Bcc:\n")))))
-
-
 
 ;; (use-package aider
 ;;   :config
