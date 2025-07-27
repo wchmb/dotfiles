@@ -64,7 +64,7 @@
         +everywhere)
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       format            ; automated prettiness
+       (format +lsp)     ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -107,7 +107,9 @@
        (eval +overlay)   ; run code, run (also, repls)
        lookup            ; navigate your code and its documentation
        llm               ; when I said you needed friends, I didn't mean...
-       (lsp +eglot)      ; M-x vscode
+       (lsp
+        +eglot
+        +peek)           ; M-x vscode
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
