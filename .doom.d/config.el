@@ -42,8 +42,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-;(load-theme 'doom-one t)
+(setq! doom-theme 'doom-one-light)
+;; (load-theme 'doom-one-light t)
 
 ;;(use-package! emacs
 ;;  :init
@@ -130,15 +130,14 @@
 
 (after! doom-modeline
   (setq! doom-modeline-persp-name t ; Display workspace (perpective) name
-         doom-modeline-major-mode-icon t) ; Display major-mode icon
-  ;; Smaller font in modeline
-  ;; TODO not working
-  ;; https://github.com/seagle0128/doom-modeline/blob/master/README.md#faq
-  (setq! doom-modeline-height 1) ; Optional
-  (if (facep 'mode-line-active)
-      (set-face-attribute 'mode-line-active nil :height 80) ; For 29+
-    (set-face-attribute 'mode-line nil :height 80))
-  (set-face-attribute 'mode-line-inactive nil :height 80))
+         doom-modeline-major-mode-icon t)) ; Display major-mode icon
+;; Smaller font in modeline
+;; https://github.com/seagle0128/doom-modeline/blob/master/README.md#faq
+;; (setq! doom-modeline-height 1) ; Optional
+;; (if (facep 'mode-line-active)
+;;     (set-face-attribute 'mode-line-active nil :height 80) ; For 29+
+;;   (set-face-attribute 'mode-line nil :height 80))
+;; (set-face-attribute 'mode-line-inactive nil :height 80))
 
 ;; Show modeline in eshell and vterm modes (hooks added in their own module's config)
 (after! eshell
@@ -150,7 +149,7 @@
   (setq! dired-kill-when-opening-new-dired-buffer t) ; Kill dired buffers immediately
   ;; Ediff marked files from Dired
   ;; https://oremacs.com/2017/03/18/dired-ediff/
-  (defun abm--ediff-files-in-dired ()
+  (defun ~/ediff-files-in-dired ()
     (interactive)
     (let ((files (dired-get-marked-files))
           (wnd (current-window-configuration)))
@@ -165,13 +164,13 @@
                 (ediff-files file2 file1)
               (ediff-files file1 file2))
             (add-hook! 'ediff-after-quit-hook-internal
-                      (lambda ()
-                        (setq! ediff-after-quit-hook-internal nil)
-                        (set-window-configuration wnd))))
+              (lambda ()
+                (setq! ediff-after-quit-hook-internal nil)
+                (set-window-configuration wnd))))
         (error "no more than 2 files should be marked"))))
   ;; TODO keymap not working
   (add-hook! 'dired-mode-hook
-    (lambda () (define-key dired-mode-map (kbd "e") 'abm--ediff-files-in-dired))))
+    (lambda () (define-key dired-mode-map (kbd "e") #'~/ediff-files-in-dired))))
 
 (after! cc-mode
   ;; Underscore is part of the word in C buffers
@@ -288,6 +287,7 @@
   :init (nyan-mode))
 
 (use-package! auto-dark
+  :disabled
   :after doom-ui
   :init (auto-dark-mode)
   :custom
@@ -295,10 +295,11 @@
   (auto-dark-allow-osascript t)
   (auto-dark-allow-powershell nil)
   :hook
-  ;; (auto-dark-dark-mode . (lambda () (load-theme 'modus-vivendi t)))
-  ;; (auto-dark-light-mode . (lambda () (load-theme 'modus-operandi t))))
-  (auto-dark-dark-mode . (lambda () (load-theme 'doom-one t)))
-  (auto-dark-light-mode . (lambda () (load-theme 'doom-one-light t))))
+;; (auto-dark-dark-mode . (lambda () (load-theme 'modus-vivendi t)))
+;; (auto-dark-light-mode . (lambda () (load-theme 'modus-operandi t))))
+  (auto-dark-dark-mode . (lambda () (setq! doom-theme 'doom-one)))
+  (auto-dark-light-mode . (lambda () (setq! doom-theme 'doom-one-light))))
+
 
 (use-package! websocket
   :after org-roam)
