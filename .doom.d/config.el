@@ -255,9 +255,15 @@
          org-download-screenshot-method "screencapture -i %s"))
 
 (after! gptel
-  (setq! gptel-model 'gemini-2.5-pro-exp-03-25
-         gptel-backend (gptel-make-gemini "Gemini"
-                         :key "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  ;; Function to retrieve the API key from macOS Keychain
+  ;; Set with: security add-generic-password -s perplexity-api -a alebdm -w
+  ;; API Keys: https://www.perplexity.ai/account/api/keys
+  (defun ~/get-llm-api-key ()
+    (let ((command "security find-generic-password -s perplexity-api -a alebdm -w"))
+      (replace-regexp-in-string "\n\\'" "" (shell-command-to-string command))))
+  (setq! gptel-model   'sonar
+         gptel-backend (gptel-make-perplexity "Perplexity"
+                         :key #'~/get-llm-api-key
                          :stream t)))
 
 (after! elfeed
