@@ -96,6 +96,18 @@
 ;; https://github.com/hlissner/doom-emacs/issues/2688
 (setq! confirm-kill-emacs nil)
 
+;; Disable hidding modeline in popups
+;; https://github.com/doomemacs/doomemacs/blob/master/modules/ui/popup/README.org#disabling-hidden-mode-line-in-popups
+(remove-hook '+popup-buffer-mode-hook #'+popup-set-modeline-on-enable-h)
+;; Popup rule for compilation buffers
+(set-popup-rule!
+  "^\\*compilation\\*"
+  :slot 1 :vslot -2 :size 0.3
+  :autosave t
+  :ttl nil
+  :quit nil    ; Dont quit on ESC
+  :select nil) ; Dont focus automatically
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
