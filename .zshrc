@@ -18,6 +18,7 @@ fpath=(
 
 export HISTTIMEFORMAT="%F %T "
 export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_DOWNLOAD_CONCURRENCY=auto
 
 # Activate TAB completion
 autoload -Uz compinit
