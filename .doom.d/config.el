@@ -71,8 +71,7 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; Screen for dashboard
-(setq! fancy-splash-image "~/Pictures/iam_doom.png")
-
+(setq! fancy-splash-image (concat doom-private-dir "iamdoom.png"))
 ;; Remove dashboard sections
 ;; https://discourse.doomemacs.org/t/how-to-change-your-splash-screen/57#addremove-sections-of-the-dashboard-1
 (remove-hook! '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu #'doom-dashboard-widget-footer)
