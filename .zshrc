@@ -7,6 +7,7 @@ path=(
   $HOME/.local/bin
   /Library/Developer/CommandLineTools/usr/bin
   $HOME/Library/Python/3.9/bin
+  /opt/homebrew/opt/openjdk/bin
   ${path[@]}
 )
 export PATH
