@@ -80,9 +80,9 @@
 ;; https://discourse.doomemacs.org/t/how-to-switch-customize-or-write-themes/37
 ;;(custom-set-faces! '(vertical-border :foreground "gray"))
 
-;; Style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq! display-line-numbers-type t)
+;; Relative line numbers for knowing how far away line numbers are,
+;; then ESC 12 <j/k> gets you exactly where you think
+(setq! display-line-numbers-type 'relative)
 
 ;; Display vertical sroll bars
 (scroll-bar-mode t)
