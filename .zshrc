@@ -20,6 +20,7 @@ fpath=(
 export HISTTIMEFORMAT="%F %T "
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_DOWNLOAD_CONCURRENCY=auto
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path) # Base SDK for building
 
 # Activate TAB completion
 autoload -Uz compinit
