@@ -28,9 +28,9 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-(setq! doom-font (font-spec :family "SF Mono" :size 14 :weight 'regular) ; Default font
-       doom-variable-pitch-font (font-spec :family "American Typewriter" :size 14 :weight 'regular) ; variable-pitch font (non-monospace)
-       doom-serif-font (font-spec :family "SF Mono" :size 14 :weight 'ultra-light)) ; fixed-pitch font (monospace)
+(setq! doom-font (font-spec :family "SF Mono" :size 14) ; Default font
+       doom-variable-pitch-font (font-spec :family "American Typewriter") ; variable-pitch font (non-monospace)
+       doom-serif-font (font-spec :family "SF Mono")) ; fixed-pitch font (monospace)
 
 ;; How many steps to in/decrease font size on `doom/increase-font-size'
 (setq! doom-font-increment 1)
