@@ -2,26 +2,28 @@
 typeset -U path cdpath fpath manpath
 
 path=(
-  $HOME/.emacs.d/bin
-  $HOME/.docker/bin
-  $HOME/.local/bin
   "$HOMEBREW_PREFIX"/opt/gnu-sed/libexec/gnubin
+  "$HOMEBREW_PREFIX"/opt/openjdk/bin
+  "$HOME"/.emacs.d/bin
+  "$HOME"/.docker/bin
+  "$HOME"/.local/bin
   /Library/Developer/CommandLineTools/usr/bin
-  $HOME/Library/Python/3.9/bin
-  /opt/homebrew/opt/openjdk/bin
-  ${path[@]}
+  "$HOME"/Library/Python/3.9/bin
+  "$HOME/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-8.2.2-2025-07-17-cf29b22d5/bin"
+  "${path[@]}"
 )
 export PATH
 
 fpath=(
-  $HOME/.docker/completions
-  ${fpath[@]}
+  "$HOME"/.docker/completions
+  "${fpath[@]}"
 )
 
 export HISTTIMEFORMAT="%F %T "
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_DOWNLOAD_CONCURRENCY=auto
-export SDKROOT=$(xcrun --sdk macosx --show-sdk-path) # Base SDK for building
+SDKROOT=$(xcrun --sdk macosx --show-sdk-path) # Base SDK for building
+export SDKROOT
 
 # Activate TAB completion
 autoload -Uz compinit
