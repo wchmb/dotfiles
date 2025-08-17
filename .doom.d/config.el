@@ -309,6 +309,15 @@
               (save-excursion (message-add-header "Cc:\n"))
               (save-excursion (message-add-header "Bcc:\n")))))
 
+(use-package! auto-dark
+  ;; Based on https://github.com/LionyxML/auto-dark-emacs#doom-emacs
+  ;; and https://github.com/doomemacs/doomemacs/issues/6424
+  :hook (doom-init-ui . auto-dark-mode)
+  :custom
+  (auto-dark-allow-osascript t)
+  (auto-dark-allow-powershell nil)
+  (auto-dark-themes '((modus-vivendi) (modus-operandi))))
+
 ;; Built-in Htop
 ;; https://laurencewarne.github.io/emacs/programming/2022/12/26/exploring-proced.html
 (use-package! proced
@@ -329,19 +338,6 @@
   :after doom-modeline
   :init (nyan-mode))
 
-(use-package! auto-dark
-  :disabled
-  :after doom-ui
-  :init (auto-dark-mode)
-  :custom
-  (auto-dark-themes nil)
-  (auto-dark-allow-osascript t)
-  (auto-dark-allow-powershell nil)
-  :hook
-;; (auto-dark-dark-mode . (lambda () (load-theme 'modus-vivendi t)))
-;; (auto-dark-light-mode . (lambda () (load-theme 'modus-operandi t))))
-  (auto-dark-dark-mode . (lambda () (setq! doom-theme 'doom-one)))
-  (auto-dark-light-mode . (lambda () (setq! doom-theme 'doom-one-light))))
 
 
 (use-package! websocket
