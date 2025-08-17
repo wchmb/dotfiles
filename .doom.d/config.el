@@ -42,29 +42,33 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq! doom-theme 'doom-one-light)
-;; (load-theme 'doom-one-light t)
 
-;;(use-package! emacs
-;;  :init
-;;  (require-theme 'modus-themes) ; `require-theme' is ONLY for the built-in Modus themes
-;;  ;; Add all your customizations prior to loading the themes
-;;  (setq modus-themes-bold-constructs t
-;;        modus-themes-italic-constructs t
-;;        modus-themes-mixed-fonts t
-;;        modus-themes-variable-pitch-ui t
-;;        modus-themes-custom-auto-reload t
-;;        modus-themes-headings
-;;        ;; '((1 . (variable-pitch 1.3))
-;;        '((1 . (1.3))
-;;          (2 . (1.2))
-;;          (agenda-date . (1.2))
-;;          (agenda-structure . (variable-pitch light 1.5))
-;;          (t . (1.1))) ; Style for all other headings
-;;        modus-vivendi-palette-overrides '((bg-main "#1d2021")) ; Not so dark
-;;        modus-operandi-palette-overrides '((bg-main "#efefef"))) ; Not so bright
-;;  :config
-;;  (load-theme 'modus-vivendi t)) ; Dark
+;; Add all modus customizations prior to loading the theme!
+(setq! modus-themes-bold-constructs t
+       modus-themes-italic-constructs t
+       modus-themes-mixed-fonts t
+       modus-themes-variable-pitch-ui t
+       modus-themes-custom-auto-reload t
+       modus-themes-prompts '(italic bold)
+       modus-themes-completions
+       '((matches . (extrabold))
+         (selection . (semibold text-also)))
+       modus-themes-headings
+;      '((1 . (variable-pitch 1.3))
+       '((1 . (1.3))
+         (2 . (1.2))
+         (agenda-date . (1.2))
+         (agenda-structure . (variable-pitch light 1.5))
+         (t . (1.1))) ; Rest of headings
+       modus-vivendi-palette-overrides '((bg-main "#1d2021")) ; Not so dark
+       modus-operandi-palette-overrides '((bg-main "#ffffe8")) ; Acme's yellow-ish
+       ;; Make line number and fringe as background
+       modus-themes-common-palette-overrides
+       '((bg-line-number-inactive bg-main)
+         (bg-line-number-active bg-cyan-intense)
+         (fringe bg-main)))
+
+(setq! doom-theme 'modus-operandi)
 
 ;; Maximize Emacs frame on start-up
 ;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
