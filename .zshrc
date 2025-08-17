@@ -5,6 +5,7 @@ path=(
   $HOME/.emacs.d/bin
   $HOME/.docker/bin
   $HOME/.local/bin
+  "$HOMEBREW_PREFIX"/opt/gnu-sed/libexec/gnubin
   /Library/Developer/CommandLineTools/usr/bin
   $HOME/Library/Python/3.9/bin
   /opt/homebrew/opt/openjdk/bin

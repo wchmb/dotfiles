@@ -230,10 +230,6 @@
   (advice-add 'magit-process-environment
               :filter-return #'~/magit-process-environment))
 
-(after! man
-  ;; Make the manpage the current buffer in the other window (default friendly)
-  ;; https://github.com/emacs-mirror/emacs/blob/master/lisp/man.el
-  (setq! Man-notify-method 'aggressive))
 
 (after! org
   (setq! org-startup-with-inline-images t) ; Display images
@@ -309,6 +305,14 @@
               (save-excursion (message-add-header "Cc:\n"))
               (save-excursion (message-add-header "Bcc:\n")))))
 
+;; Always return `man' for documentation lookup
+(defun +default/man-or-woman ()
+  (interactive)
+  (call-interactively #'man))
+(after! man
+  ;; Make the manpage the current buffer in the other window (default friendly)
+  ;; https://github.com/emacs-mirror/emacs/blob/master/lisp/man.el
+  (setq! Man-notify-method 'aggressive))
 (use-package! auto-dark
   ;; Based on https://github.com/LionyxML/auto-dark-emacs#doom-emacs
   ;; and https://github.com/doomemacs/doomemacs/issues/6424
