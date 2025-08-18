@@ -46,10 +46,9 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
-;; TODO Restart Emacs and try again, reply after https://github.com/doomemacs/doomemacs/issues/8263#issuecomment-2703366067
-;;(package! solaire-mode :disable t)
 (package! evil-escape :disable t) ; Dont custom key sequence to escape from Insert mode
 (package! mu4e-alert :disable t) ; Dont notify new emails
+(package! solaire-mode :disable t)
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
