@@ -15,6 +15,7 @@
 ;; (package! good-scroll) ; smooth scroll: based on built-in pixel-scroll-mode
 ;; (package! gptel)       ; LLM client
 ;; (package! aidermacs)   ; aider (AI pair programming)
+(package! dimmer) ; Dim inactive buffers
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
@@ -46,9 +47,9 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
-(package! evil-escape :disable t) ; Dont custom key sequence to escape from Insert mode
-(package! mu4e-alert :disable t) ; Dont notify new emails
 (package! solaire-mode :disable t)
+(package! evil-escape :disable t) ; Don't custom key sequence to escape from Insert mode
+(package! mu4e-alert :disable t) ; Don't notify new emails
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe

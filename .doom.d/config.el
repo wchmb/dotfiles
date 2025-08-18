@@ -365,6 +365,12 @@
   (auto-dark-allow-powershell nil)
   (auto-dark-themes '((modus-vivendi) (modus-operandi))))
 
+(use-package! dimmer
+  :custom
+  (dimmer-fraction 0.3)
+  :init
+  (dimmer-configure-which-key) ; Do not dim which-key popups
+  (dimmer-mode 1))
 
 (use-package! nyan-mode
   :after doom-modeline
