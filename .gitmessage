@@ -10,10 +10,13 @@
 # type can be:
 # - feat     (new feature)
 # - fix      (bug fix)
-# - docs     (changes to documentation)
-# - style    (formatting, missing semi colons, etc; no code change)
 # - refactor (refactoring production code)
-# - test     (adding missing tests, refactoring tests; no production code change)
+# - perf     (improving runtime performance)
+# - tweak    (minor adjustments, cosmetic or nice-to-have)
+# - style    (formatting, missing semi colons, etc)
+# - test     (adding or refactoring tests; no production code change)
+# - docs     (changes to documentation)
+# - dev      (build scripts, CI/CD, ignore files, etc; no code change)
 # - chore    (updating grunt tasks etc; no production code change)
 #
 # <scope>   is just the scope of the change. Something like (admin) or (teacher).
