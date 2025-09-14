@@ -70,16 +70,16 @@ automatically-unhide-macos-hidden-apps = false
 # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 # Note: move-workspace-to-monitor has no effect for workspaces that have monitor assignment
 [workspace-to-monitor-force-assignment]
-    '1-Main'   = ['built-in', 'main']
-    '2-Comms'  = ['built-in', 'main']
-    '3-System' = ['built-in', 'main']
-    '4'        = ['built-in', 'main']
-    '5'        = ['built-in', 'main']
-    '6'        = ['built-in', 'main']
-    '7'        = ['secondary', 'built-in']
-    '8'        = ['secondary', 'built-in']
-    '9-Browse' = ['secondary', 'built-in']
-    '0-Code'   = ['secondary', 'built-in']
+    '1-Init'   = ['built-in', 'secondary']
+    '2-Comms'  = ['built-in', 'secondary']
+    '3-System' = ['built-in', 'secondary']
+    '4'        = ['built-in', 'secondary']
+    '5'        = ['built-in', 'secondary']
+    '6'        = ['built-in', 'secondary']
+    '7'        = ['main', 'built-in']
+    '8'        = ['main', 'built-in']
+    '9-Browse' = ['main', 'built-in']
+    '0-Code'   = ['main', 'built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -129,7 +129,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    alt-1 = 'workspace 1-Main'
+    alt-1 = 'workspace 1-Init'
     alt-2 = 'workspace 2-Comms'
     alt-3 = 'workspace 3-System'
     alt-4 = 'workspace 4'
@@ -145,8 +145,9 @@ automatically-unhide-macos-hidden-apps = false
     # alt-r = 'workspace ○○○●'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    alt-p    = 'workspace --wrap-around prev'
-    alt-n    = 'workspace --wrap-around next'
+# eñe !!!
+#    alt-p    = 'workspace --wrap-around prev'
+#    alt-n    = 'workspace --wrap-around next'
     alt-up   = 'workspace --wrap-around prev' # with arrows
     alt-down = 'workspace --wrap-around next'
     alt-tab = 'workspace-back-and-forth'
@@ -158,7 +159,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-l = 'move right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    alt-shift-1 = 'move-node-to-workspace 1-Main'
+    alt-shift-1 = 'move-node-to-workspace 1-Init'
     alt-shift-2 = 'move-node-to-workspace 2-Comms'
     alt-shift-3 = 'move-node-to-workspace 3-System'
     alt-shift-4 = 'move-node-to-workspace 4'
@@ -204,11 +205,11 @@ automatically-unhide-macos-hidden-apps = false
 # Get app-id with: aerospace list-apps
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
-run = 'move-node-to-workspace 1-Main'
+run = 'move-node-to-workspace 1-Init'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
-run = 'move-node-to-workspace 1-Main'
+run = 'move-node-to-workspace 1-Init'
 
 [[on-window-detected]]
 if.app-id = 'org.apple.mail'
