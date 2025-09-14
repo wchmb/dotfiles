@@ -229,6 +229,14 @@
                         {
                             "from": { "key_code": "escape" },
                             "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
+                        },
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "caps_lock" }]
                         }
                     ]
                 },
@@ -247,28 +255,10 @@
                         "vendor_id": 13
                     },
                     "ignore": true
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 61664,
-                        "vendor_id": 13
-                    },
-                    "ignore": true
                 }
             ],
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "left_control" }]
-                },
-                {
-                    "from": { "key_code": "left_control" },
-                    "to": [{ "key_code": "caps_lock" }]
-                }
-            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
