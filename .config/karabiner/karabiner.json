@@ -248,26 +248,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "caps_lock(once) => escape, caps_lock(hold) => left_ctrl",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "left_control" }],
-                                "to_if_alone": [
-                                    {
-                                        "hold_down_milliseconds": 200,
-                                        "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
@@ -309,12 +289,12 @@
                             "to": [{ "key_code": "caps_lock" }]
                         },
                         {
-                            "from": { "key_code": "escape" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                        },
-                        {
                             "from": { "key_code": "caps_lock" },
                             "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "escape" },
+                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                         },
                         {
                             "from": { "key_code": "left_control" },
