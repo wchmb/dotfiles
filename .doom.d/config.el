@@ -58,7 +58,7 @@
        '((matches . (extrabold))
          (selection . (semibold text-also)))
        modus-themes-headings
-;      '((1 . (variable-pitch 1.3))
+       ; '((1 . (variable-pitch 1.3))
        '((1 . (1.3))
          (2 . (1.2))
          (agenda-date . (1.2))
@@ -70,7 +70,13 @@
        modus-themes-common-palette-overrides
        '((bg-line-number-inactive bg-main)
          (bg-line-number-active bg-cyan-intense)
-         (fringe bg-main)))
+         (bg-prose-block-delimiter bg-main)
+         (fg-prose-code unspecified)
+         (bg-prose-code bg-prose-block-contents)
+         (fg-prose-verbatim magenta-intense)
+         (fringe bg-main)
+         (corfu-default bg-main))) ; Hack: I don't like the default bg-dim:
+                                   ; https://github.com/protesilaos/modus-themes/blob/main/modus-themes.el#L2051
 
 (setq! doom-theme 'modus-operandi)
 
