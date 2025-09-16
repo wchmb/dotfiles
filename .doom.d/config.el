@@ -85,10 +85,6 @@
 ;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; Display window separator
-;; https://discourse.doomemacs.org/t/how-to-switch-customize-or-write-themes/37
-;(custom-set-faces! '(vertical-border :foreground "gray"))
-
 ;; Disable confirmation on exit
 ;; https://github.com/hlissner/doom-emacs/issues/2688
 (setq! confirm-kill-emacs nil)
