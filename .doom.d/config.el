@@ -159,6 +159,16 @@
   (add-hook! 'dired-mode-hook
     (lambda () (define-key dired-mode-map (kbd "e") #'~/ediff-files-in-dired))))
 
+;;; :core
+(after! which-key
+  (setq! which-key-idle-delay 0.3) ; Faster popup
+  ;; Remove "evil-" prefix, it's too verbose
+  (setq! which-key-allow-multiple-replacements t)
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◀\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◁\\1"))))
+
 
 ;;; :ui doom-dashboard
 ;; Screen for dashboard
