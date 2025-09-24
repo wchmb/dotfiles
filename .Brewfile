@@ -1,5 +1,4 @@
 tap "d12frosted/emacs-plus"
-tap "felixkratz/formulae"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "mhaeuser/mhaeuser"
@@ -33,7 +32,6 @@ brew "watch"
 brew "wget"
 brew "yt-dlp"
 brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-c9rgreen-sonoma-icon", "with-imagemagick", "with-native-comp", "with-no-frame-refocus"]
-brew "felixkratz/formulae/borders"
 cask "adguard"
 cask "aerospace"
 cask "alt-tab"

@@ -6,13 +6,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = [
-    # JankyBorders has a built-in detection of already running process,
-    # so it won't be run twice on AeroSpace restart
-    # See https://github.com/FelixKratz/JankyBorders/wiki/Man-Page
-    # IMPORTANT! Turning on hidpi will drastically increase memory usage: https://github.com/FelixKratz/JankyBorders/issues/54
-    'exec-and-forget borders active_color="glow(0x80ed78aa)" inactive_color=0x1a000000 hidpi=off width=2.5'
-]
+after-startup-command = []
 
 # Start AeroSpace at login
 start-at-login = true
