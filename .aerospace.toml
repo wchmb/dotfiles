@@ -83,8 +83,6 @@ automatically-unhide-macos-hidden-apps = false
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
-# Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
     # All possible keys:
@@ -123,10 +121,6 @@ automatically-unhide-macos-hidden-apps = false
     alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
     alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
     alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
-
-    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    alt-shift-minus = 'resize smart -50'
-    alt-shift-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1-Init'
@@ -178,15 +172,14 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 
-
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
+    alt-r = 'mode resize'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-    esc = ['reload-config', 'mode main']
-    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    r = ['flatten-workspace-tree', 'mode main'] # Reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -197,9 +190,19 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
-    # down = 'volume down'
-    # up = 'volume up'
-    # shift-down = ['volume set 0', 'mode main']
+    esc = ['reload-config', 'mode main']
+    q   = 'mode main'
+
+[mode.resize.binding]
+    minus = 'resize smart -50'
+    equal = 'resize smart +50'
+    h = 'resize smart -50'
+    l = 'resize smart +50'
+    j = 'resize smart-opposite -50'
+    k = 'resize smart-opposite +50'
+
+    esc = 'mode main'
+    q   = 'mode main'
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#callbacks
 # Get app-id with: aerospace list-apps
