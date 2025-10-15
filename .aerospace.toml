@@ -111,10 +111,10 @@ automatically-unhide-macos-hidden-apps = false
     alt-f = 'fullscreen --no-outer-gaps'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
-    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
-    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
-    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+    alt-h = 'focus --ignore-floating --boundaries-action wrap-around-the-workspace left'
+    alt-j = 'focus --ignore-floating --boundaries-action wrap-around-the-workspace down'
+    alt-k = 'focus --ignore-floating --boundaries-action wrap-around-the-workspace up'
+    alt-l = 'focus --ignore-floating --boundaries-action wrap-around-the-workspace right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1-Init'
