@@ -58,14 +58,13 @@
        '((matches . (extrabold))
          (selection . (semibold text-also)))
        modus-themes-headings
-       ; '((1 . (variable-pitch 1.3))
        '((1 . (1.3))
          (2 . (1.2))
          (agenda-date . (1.2))
          (agenda-structure . (variable-pitch light 1.5))
          (t . (1.1))) ; Rest of headings
-       modus-vivendi-palette-overrides '((bg-main "#1d2021")) ; Not so dark
-       modus-operandi-palette-overrides '((bg-main "#ffffe8")) ; Acme's yellow-ish
+       modus-vivendi-palette-overrides '((bg-main "#1d2021") (bg-dim "#333637")) ; Not so dark
+       modus-operandi-palette-overrides '((bg-main "#ffffe8") (bg-dim "#e5e5d0")) ; Acme's yellow-ish
        ;; Make line number and fringe as background
        modus-themes-common-palette-overrides
        '((bg-line-number-inactive bg-main)
@@ -75,8 +74,7 @@
          (bg-prose-code bg-prose-block-contents)
          (fg-prose-verbatim magenta-intense)
          (fringe bg-main)
-         (corfu-default bg-main))) ; Hack: I don't like the default bg-dim:
-                                   ; https://github.com/protesilaos/modus-themes/blob/main/modus-themes.el#L2051
+         (corfu-default bg-main))) ; Default is bg-dim: https://github.com/protesilaos/modus-themes/blob/main/modus-themes.el#L2051
 
 (setq! doom-theme 'modus-operandi)
 
