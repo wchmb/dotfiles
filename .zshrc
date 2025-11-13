@@ -2,7 +2,8 @@
 typeset -U path cdpath fpath manpath
 
 path=(
-  "$HOMEBREW_PREFIX"/opt/gnu-sed/libexec/gnubin
+  "$HOMEBREW_PREFIX"/opt/coreutils/bin
+  "$HOMEBREW_PREFIX"/opt/gnu-sed/bin
   "$HOMEBREW_PREFIX"/opt/openjdk/bin
   "$HOME"/.emacs.d/bin
   "$HOME"/.docker/bin
@@ -18,18 +19,28 @@ fpath=(
   "$HOME"/.docker/completions
   "${fpath[@]}"
 )
+export FPATH
+
+manpath=(
+  "$HOMEBREW_PREFIX"/opt/coreutils/share/man
+  "$HOMEBREW_PREFIX"/opt/gnu-sed/share/man
+  "${manpath[@]}"
+)
+export MANPATH
 
 export HISTTIMEFORMAT="%F %T "
 export HOMEBREW_NO_ENV_HINTS=1
 SDKROOT=$(xcrun --sdk macosx --show-sdk-path) # Base SDK for building
 export SDKROOT
 
+# Autocomplete {{{
 # Activate TAB completion
 autoload -Uz compinit
 compinit
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 compdef dot=git # Enable git completions for dot
+# }}}
 
 # History {{{
 setopt append_history    # Append history
