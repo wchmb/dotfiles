@@ -17,11 +17,45 @@ SubFolders Verbatim
 Path ~/.maildir/icloud/
 Inbox ~/.maildir/icloud/INBOX
 
-Channel icloud
+Channel icloud-default
 Far :icloud-remote:
 Near :icloud-local:
-Patterns *
+Patterns * !Deleted* !Trash !Sent* !Junk !Spam !Archive !Refile
 Create Near
-Sync All
 Expunge Both
 SyncState *
+
+Channel icloud-sent
+Far :icloud-remote:"Sent Messages"
+Near :icloud-local:Sent
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-spam
+Far :icloud-remote:Junk
+Near :icloud-local:Spam
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-trash
+Far :icloud-remote:"Deleted Messages"
+Near :icloud-local:Trash
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-refile
+Far :icloud-remote:Archive
+Near :icloud-local:Refile
+Create Near
+Expunge Both
+SyncState *
+
+Group icloud
+Channel icloud-sent
+Channel icloud-spam
+Channel icloud-trash
+Channel icloud-refile
+Channel icloud-default

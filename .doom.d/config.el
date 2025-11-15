@@ -355,29 +355,34 @@
 
 ;;; :email mu4e
 (after! mu4e
-  (setq! mu4e-update-interval 300) ; Automatic fetching
-  (setq! sendmail-program (executable-find "msmtp")
-         send-mail-function #'smtpmail-send-it
+  (setq! mu4e-mu-binary (or (executable-find "mu") "/opt/homebrew/bin/mu")
+         mu4e-update-interval 300 ; Automatic fetching
+         ;; Tweak when mu4e should guess or ask the correct context
+         mu4e-context-policy 'pick-first
+         mu4e-compose-context-policy 'ask)
+  (setq! sendmail-program (or (executable-find "msmtp") "/opt/homebrew/bin/msmtp")
          message-sendmail-f-is-evil t
-         message-sendmail-extra-arguments '("--read-envelope-from")
+         message-sendmail-extra-arguments '("--read-envelope-from") ; Choose the SMTP server according to the from field
          message-send-mail-function #'message-send-mail-with-sendmail)
+  ;; iCloud
   (set-email-account!
    "icloud"
    '((user-full-name         . "Alejandro Blasco")
      (smtpmail-smtp-user     . "alebdm@icloud") ; Required for sending mail
      (mu4e-compose-signature . "\nAlejandro\nalebdm@icloud.com")
-     (mu4e-sent-folder       . "/icloud/Sent Messages")
-     (mu4e-trash-folder      . "/icloud/Deleted Messages")
+     (mu4e-sent-folder       . "/icloud/Sent")
      (mu4e-drafts-folder     . "/icloud/Drafts")
-     (mu4e-refile-folder     . "/icloud/Archive"))
    t)
+     (mu4e-trash-folder      . "/icloud/Trash")
+     (mu4e-refile-folder     . "/icloud/Refile"))
   (add-to-list 'mu4e-bookmarks
                '("maildir:/icloud/INBOX" "Inbox" ?i) t)
 
-  (add-hook 'mu4e-compose-mode-hook
-            (lambda ()
-              (save-excursion (message-add-header "Cc:\n"))
-              (save-excursion (message-add-header "Bcc:\n")))))
+  ;; Cc/Bcc headers
+  (add-hook! 'mu4e-compose-mode-hook
+    (defun ~/mu4e-add-cc-bcc-headers ()
+      (save-excursion (message-add-header "Cc:\n"))
+      (save-excursion (message-add-header "Bcc:\n"))))
 
 ;;; :app rss
 (after! elfeed
