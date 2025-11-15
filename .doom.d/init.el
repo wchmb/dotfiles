@@ -201,7 +201,8 @@
        :email
        (mu4e
         ;; +org
-        +mbsync)
+        +mbsync
+        +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 

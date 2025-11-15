@@ -372,12 +372,26 @@
      (mu4e-compose-signature . "\nAlejandro\nalebdm@icloud.com")
      (mu4e-sent-folder       . "/icloud/Sent")
      (mu4e-drafts-folder     . "/icloud/Drafts")
-   t)
      (mu4e-trash-folder      . "/icloud/Trash")
      (mu4e-refile-folder     . "/icloud/Refile"))
+   t) ; Default/fallback account
+  ;; Gmail
+  (set-email-account!
+   "gmail"
+   '((user-full-name         . "Alejandro Blasco")
+     (smtpmail-smtp-user     . "alejandro@fasts3.io") ; Required for sending mail
+     (mu4e-compose-signature . "\nAlejandro\nalejandro@fasts3.io")
+     (mu4e-sent-folder       . "/gmail/Sent")
+     (mu4e-drafts-folder     . "/gmail/Drafts")
+     (mu4e-trash-folder      . "/gmail/Trash")
+     (mu4e-refile-folder     . "/gmail/Refile")))
+  ;; Apply special integrations to the Google account
+  (setq! +mu4e-gmail-accounts '(("alejandro@fasts3.io" . "/gmail"))) ; Set email and maildir
+  ;; Bookmarks
   (add-to-list 'mu4e-bookmarks
-               '("maildir:/icloud/INBOX" "Inbox" ?i) t)
-
+               '("maildir:/icloud/INBOX" "Inbox - iCloud" ?i) t)
+  (add-to-list 'mu4e-bookmarks
+               '("maildir:/gmail/INBOX" "Inbox - Google" ?g) t)
   ;; Cc/Bcc headers
   (add-hook! 'mu4e-compose-mode-hook
     (defun ~/mu4e-add-cc-bcc-headers ()
