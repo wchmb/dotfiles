@@ -157,6 +157,38 @@
   (add-hook! 'dired-mode-hook
     (lambda () (define-key dired-mode-map (kbd "e") #'~/ediff-files-in-dired))))
 
+;; https://laurencewarne.github.io/emacs/programming/2022/12/26/exploring-proced.html
+(use-package! proced
+  :defer t
+  :custom
+  (proced-auto-update-flag t)
+  (proced-auto-update-interval 10)
+  (proced-goal-attribute nil)
+  (proced-show-remote-processes t)
+  (proced-enable-color-flag t)
+  (proced-process-tree t)
+  (proced-format 'mycustom)
+  :config
+  (defun ~/proced-command-basename (args)
+    "Format process arguments to show only the basename of the command."
+    (when args
+      (let* ((fullpath (split-string args))
+             (basename (car fullpath)))
+        (file-name-nondirectory basename))))
+  (setf (alist-get 'args proced-grammar-alist)
+        '("Process"
+          ~/proced-command-basename
+          left
+          proced-string-lessp
+          nil
+          (args pid)
+          (nil t nil)))
+  ;; mycustom is my proced-format (see `proced-gramar-alist')
+  (add-to-list
+   'proced-format-alist
+   '(mycustom user pid ppid sess tree pcpu pmem rss start time state (args comm))))
+(defalias 'top #'proced)
+
 ;;; :core
 (after! which-key
   (setq! which-key-idle-delay 0.3) ; Faster popup
@@ -385,22 +417,6 @@
 (use-package! nyan-mode
   :after doom-modeline
   :init (nyan-mode))
-
-;; Built-in Htop
-;; https://laurencewarne.github.io/emacs/programming/2022/12/26/exploring-proced.html
-(use-package! proced
-  :defer t
-  :custom
-  (proced-auto-update-flag t)
-  (proced-goal-attribute nil)
-  (proced-show-remote-processes t)
-  (proced-enable-color-flag t)
-  (proced-format 'custom)
-  :config
-  (add-to-list
-   'proced-format-alist
-   '(custom user pid ppid sess tree pcpu pmem rss start time state (args comm))))
-(defalias 'htop 'proced)
 
 ;;;
 ;;; Mappings
