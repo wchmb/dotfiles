@@ -381,8 +381,20 @@
 
 ;;; :app rss
 (after! elfeed
-  (setq! elfeed-search-filter "@1-week-ago +unread -rust -youtube -news -chatty")
+  (setq! elfeed-search-filter "@2-week-ago +unread -rust -youtube -news -yak")
   (add-hook! 'elfeed-search-mode-hook #'elfeed-update)) ; Update feeds when opening
+(map! :leader
+      (:prefix-map ("o" . "open")
+                   (:when (modulep! :app rss)
+                     :desc "RSS" "S" #'=rss)))
+
+(use-package! elfeed-score
+  :after elfeed
+  :config
+  (elfeed-score-load-score-file (concat org-directory "elfeed.score"))
+  (elfeed-score-enable)
+  (map! :map elfeed-search-mode-map
+        :n "=" elfeed-score-map))
 
 ;;; :config default
 ;; Always return `man' for documentation lookup
