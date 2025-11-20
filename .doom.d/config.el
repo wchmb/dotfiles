@@ -307,7 +307,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq! org-directory "~/org/")
 (after! org
-  (setq! org-startup-with-inline-images t) ; Display images
+  (setq! org-log-done 'time ; Record the time when an element is marked DONE
+         org-startup-with-inline-images t) ; Display images
   ;; Some faces I like
   (set-face-attribute 'org-block-begin-line nil
                       :background (doom-color 'bg))
