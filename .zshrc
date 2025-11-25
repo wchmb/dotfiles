@@ -25,6 +25,7 @@ manpath=(
   "$HOMEBREW_PREFIX"/opt/coreutils/share/man
   "$HOMEBREW_PREFIX"/opt/gnu-sed/share/man
   "${manpath[@]}"
+  "" # Important! this puts a trailing colon in $MANPATH so that the default search path is appended (see manpath(5))
 )
 export MANPATH
 
