@@ -133,12 +133,9 @@ automatically-unhide-macos-hidden-apps = false
     # alt-r = 'workspace ○○○●'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-# eñe !!!
-#    alt-p    = 'workspace --wrap-around prev'
-#    alt-n    = 'workspace --wrap-around next'
-    alt-up   = 'workspace --wrap-around prev' # with arrows
-    alt-down = 'workspace --wrap-around next'
-    alt-tab = 'workspace-back-and-forth'
+    alt-left   = 'workspace --wrap-around prev'
+    alt-right  = 'workspace --wrap-around next'
+    alt-tab    = 'workspace-back-and-forth'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
@@ -214,27 +211,31 @@ run = 'move-node-to-workspace 2-Comms'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Messages'
-run = ['move-node-to-workspace 2-Comms']
+run = 'move-node-to-workspace 2-Comms'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = ['move-node-to-workspace 2-Comms']
+run = 'move-node-to-workspace 2-Comms'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = ['move-node-to-workspace 2-Comms']
+run = 'move-node-to-workspace 2-Comms'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'WhatsApp Web'
+run = 'move-node-to-workspace 2-Comms'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'FastS3'
-run = ['move-node-to-workspace 2-Comms']
+run = 'move-node-to-workspace 2-Comms'
 
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
-run = ['move-node-to-workspace 3-System']
+run = 'move-node-to-workspace 3-System'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.shortcuts'
-run = ['move-node-to-workspace 3-System']
+run = 'move-node-to-workspace 3-System'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
