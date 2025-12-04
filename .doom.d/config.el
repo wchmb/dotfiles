@@ -85,9 +85,15 @@
 ;; Display vertical sroll bars
 (scroll-bar-mode t)
 
-;; Maximize Emacs frame on start-up
+;; Maximize frame initially
 ;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; Slightly transparent frames by default
+;; https://kristofferbalintona.me/posts/202206071000/
+;; M-x doom/set-frame-opacity ; Change current frame opacity interactively
+(set-frame-parameter nil 'alpha 90) ; For current frame
+(add-to-list 'default-frame-alist '(alpha . 90)) ; For all new frames henceforth
 
 ;; Disable confirmation on exit
 ;; https://github.com/hlissner/doom-emacs/issues/2688
