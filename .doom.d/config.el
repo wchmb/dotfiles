@@ -441,10 +441,10 @@
 
 (use-package! dimmer
   :custom
-  (dimmer-fraction 0.3)
+  (dimmer-fraction 0.2) ; Slightly dim inactive buffers
   :init
   (dimmer-configure-which-key) ; Do not dim which-key popups
-  (dimmer-mode 1))
+  (dimmer-mode t))
 
 (use-package! nyan-mode
   :after doom-modeline
