@@ -190,8 +190,10 @@
 (defalias 'top #'proced)
 
 ;;; :core
-(after! which-key
-  (setq! which-key-idle-delay 0.3) ; Faster popup
+(use-package! which-key
+  :init
+  (setq! which-key-idle-delay 0.1) ; Faster popup. Must be set before mode activates.
+  :config
   ;; Remove "evil-" prefix, it's too verbose
   (setq! which-key-allow-multiple-replacements t)
   (pushnew!
