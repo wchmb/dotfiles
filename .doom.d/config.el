@@ -405,24 +405,17 @@
   (add-hook! 'mu4e-compose-mode-hook
     (defun ~/mu4e-add-cc-bcc-headers ()
       (save-excursion (message-add-header "Cc:\n"))
-      (save-excursion (message-add-header "Bcc:\n"))))
+      (save-excursion (message-add-header "Bcc:\n")))))
 
 ;;; :app rss
 (after! elfeed
   (setq! elfeed-search-filter "@2-week-ago +unread -rust -youtube -news -yak")
   (add-hook! 'elfeed-search-mode-hook #'elfeed-update)) ; Update feeds when opening
-(map! :leader
-      (:prefix-map ("o" . "open")
-                   (:when (modulep! :app rss)
-                     :desc "RSS" "S" #'=rss)))
 
 (use-package! elfeed-score
   :after elfeed
   :config
   (elfeed-score-load-score-file (concat org-directory "elfeed.score"))
-  (elfeed-score-enable)
-  (map! :map elfeed-search-mode-map
-        :n "=" elfeed-score-map))
 
 ;;; :config default
 ;; Always return `man' for documentation lookup
@@ -458,11 +451,4 @@
   :after doom-modeline
   :init (nyan-mode))
 
-;;;
-;;; Mappings
-;;;
-
-(map! :leader
-      ;; <leader> f a : Find alternate .h/.cpp file
-      (:prefix-map ("f" . "file")
-       :desc "Find alternate (h/c)" "a"  #'ff-find-other-file))
+(load! "+bindings")
