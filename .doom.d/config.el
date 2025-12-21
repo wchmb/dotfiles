@@ -221,20 +221,10 @@
          ;; doom-modeline-persp-name t ; Display workspace (perpective)
          doom-modeline-major-mode-icon t) ; Display major-mode icon
   ;; Doom adds a hook to enable filesize. I don't care
-  (remove-hook! 'doom-modeline-mode-hook #'size-indication-mode))
-
-;;: :ui popup
-;; Do not hide modeline in popups
-;; https://github.com/doomemacs/doomemacs/blob/master/modules/ui/popup/README.org#disabling-hidden-mode-line-in-popups
-(remove-hook '+popup-buffer-mode-hook #'+popup-set-modeline-on-enable-h)
-;; Popup rule for compilation buffers
-(set-popup-rule!
-  "^\\*compilation\\*"
-  :slot 1 :vslot -2 :size 0.3
-  :autosave t
-  :ttl nil
-  :quit nil    ; Dont quit on ESC
-  :select nil) ; Dont focus automatically
+  (remove-hook! 'doom-modeline-mode-hook #'size-indication-mode)
+  ;; Do not hide modeline in popups
+  ;; https://github.com/doomemacs/doomemacs/blob/master/modules/ui/popup/README.org#disabling-hidden-mode-line-in-popups
+  (remove-hook! '+popup-buffer-mode-hook #'+popup-set-modeline-on-enable-h))
 
 ;;; :ui tabs
 (after! centaur-tabs
@@ -440,5 +430,6 @@
   :init (nyan-mode))
 
 (load! "+bindings")
+(load! "+popups")
 (load! "+faces")
 (load! "+secret" nil t)
