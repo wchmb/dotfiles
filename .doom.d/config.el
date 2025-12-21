@@ -222,14 +222,6 @@
          doom-modeline-major-mode-icon t) ; Display major-mode icon
   ;; Doom adds a hook to enable filesize. I don't care
   (remove-hook! 'doom-modeline-mode-hook #'size-indication-mode))
-;; Smaller font in modeline
-;; https://github.com/seagle0128/doom-modeline/blob/master/README.md#faq
-;; (setq! doom-modeline-height 1) ; Optional
-;; (if (facep 'mode-line-active)
-;;     (set-face-attribute 'mode-line-active nil :height 80) ; For 29+
-;;   (set-face-attribute 'mode-line nil :height 80))
-;; (set-face-attribute 'mode-line-inactive nil :height 80))
-
 
 ;;: :ui popup
 ;; Do not hide modeline in popups
@@ -316,12 +308,8 @@
 (setq! org-directory "~/org/")
 (after! org
   (setq! org-log-done 'time ; Record the time when an element is marked DONE
-         org-startup-with-inline-images t) ; Display images
-  ;; Some faces I like
-  (set-face-attribute 'org-block-begin-line nil
-                      :background (doom-color 'bg))
-  (set-face-attribute 'org-block-end-line nil
-                      :background (doom-color 'bg)))
+         org-startup-with-inline-images t)) ; Display images
+
 ;; +pretty
 (after! org-modern
   (setq! org-modern-star 'replace
@@ -452,3 +440,5 @@
   :init (nyan-mode))
 
 (load! "+bindings")
+(load! "+faces")
+(load! "+secret" nil t)
