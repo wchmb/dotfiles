@@ -137,31 +137,6 @@
 
 ;;; Buit-ins
 (after! dired
-  (setq! dired-kill-when-opening-new-dired-buffer t) ; Kill dired buffers immediately
-  ;; From https://oremacs.com/2017/03/18/dired-ediff/
-  (defun ~/ediff-files-in-dired ()
-    "Ediff marked files from Dired"
-    (interactive)
-    (let ((files (dired-get-marked-files))
-          (wnd (current-window-configuration)))
-      (if (<= (length files) 2)
-          (let ((file1 (car files))
-                (file2 (if (cdr files)
-                           (cadr files)
-                         (read-file-name
-                          "file: "
-                          (dired-dwim-target-directory)))))
-            (if (file-newer-than-file-p file1 file2)
-                (ediff-files file2 file1)
-              (ediff-files file1 file2))
-            (add-hook! 'ediff-after-quit-hook-internal
-              (lambda ()
-                (setq! ediff-after-quit-hook-internal nil)
-                (set-window-configuration wnd))))
-        (error "no more than 2 files should be marked"))))
-  ;; TODO keymap not working
-  (add-hook! 'dired-mode-hook
-    (lambda () (define-key dired-mode-map (kbd "e") #'~/ediff-files-in-dired))))
 
 ;; https://laurencewarne.github.io/emacs/programming/2022/12/26/exploring-proced.html
 (use-package! proced
@@ -175,7 +150,7 @@
   (proced-process-tree t)
   (proced-format 'mycustom)
   :config
-  (defun ~/proced-command-basename (args)
+  (defun abm/proced-command-basename (args)
     "Format process arguments to show only the basename of the command."
     (when args
       (let* ((fullpath (split-string args))
@@ -183,7 +158,7 @@
         (file-name-nondirectory basename))))
   (setf (alist-get 'args proced-grammar-alist)
         '("Process"
-          ~/proced-command-basename
+          abm/proced-command-basename
           left
           proced-string-lessp
           nil
@@ -245,14 +220,14 @@
 (after! gptel
   ;; Set with: security add-generic-password -s perplexity-api -a alebdm -w
   ;; API Keys: https://www.perplexity.ai/account/api/keys
-  (defun ~/get-llm-api-key ()
+  (defun abm/get-llm-api-key ()
     "Get Perplexity API key from macOS Keychain."
     (let ((command "security find-generic-password -s perplexity-api -a alebdm -w"))
       (replace-regexp-in-string "\n\\'" "" (shell-command-to-string command))))
   (setq! gptel-model   'sonar
          gptel-backend (gptel-make-perplexity "Perplexity"
-                         :key #'~/get-llm-api-key
-                         :stream t)))
+                         :key #'abm/get-llm-api-key
+                         :stream t))
 
 ;;; :tools lsp +eglot
 (after! eglot
@@ -260,26 +235,8 @@
 
 ;;; :tools magit
 (after! magit
-  ;; Support Git bare repos
-  ;; https://github.com/magit/magit/issues/460#issuecomment-1475082958
-  (defun ~/magit-process-environment (env)
-    "Detect and set git -bare repo env vars when in tracked dotfile directories."
-    (let* ((default (file-name-as-directory (expand-file-name default-directory)))
-           (git-dir (expand-file-name "~/.dotfiles/"))
-           (work-tree (expand-file-name "~/"))
-           (dotfile-dirs
-            (-map (apply-partially 'concat work-tree)
-                  (-uniq (-keep #'file-name-directory
-                                (split-string (shell-command-to-string
-                                               (format "/usr/bin/git --git-dir=%s --work-tree=%s ls-tree --full-tree --name-only -r HEAD"
-                                                       git-dir work-tree))))))))
-      (push work-tree dotfile-dirs)
-      (when (member default dotfile-dirs)
-        (push (format "GIT_WORK_TREE=%s" work-tree) env)
-        (push (format "GIT_DIR=%s" git-dir) env)))
-    env)
   (advice-add 'magit-process-environment
-              :filter-return #'~/magit-process-environment))
+              :filter-return #'+abm/magit-process-environment))
 
 ;;; :lang cc
 (after! cc-mode
@@ -381,7 +338,7 @@
                '("maildir:/gmail/INBOX" "Inbox - Google" ?g) t)
   ;; Cc/Bcc headers
   (add-hook! 'mu4e-compose-mode-hook
-    (defun ~/mu4e-add-cc-bcc-headers ()
+    (defun abm/mu4e-add-cc-bcc-headers ()
       (save-excursion (message-add-header "Cc:\n"))
       (save-excursion (message-add-header "Bcc:\n")))))
 

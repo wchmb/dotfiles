@@ -15,7 +15,7 @@
        :i "C-w" evil-window-map))
 
 (map! :map dired-mode-map
-      :nv "e" #'~/ediff-files)
+      :nv "e" #'+abm/dired-ediff-files)
 
 (map! (:after evil-org
        :map evil-org-mode-map
