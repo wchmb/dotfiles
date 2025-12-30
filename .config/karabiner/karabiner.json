@@ -59,12 +59,18 @@
                         ]
                     },
                     {
-                        "description": "[Built-in] Left Ctrl(tap) => Esc",
+                        "description": "[Built-in][Nuphy] Left Ctrl(tap) => Esc",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
-                                        "identifiers": [{ "is_built_in_keyboard": true }],
+                                        "identifiers": [
+                                            { "is_built_in_keyboard": true },
+                                            {
+                                                "description": "Nuphy",
+                                                "vendor_id": 2007
+                                            }
+                                        ],
                                         "type": "device_if"
                                     }
                                 ],
@@ -375,6 +381,24 @@
                         "vendor_id": 13
                     },
                     "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "vendor_id": 2007
+                    },
+                    "ignore": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "caps_lock" }]
+                        }
+                    ]
                 }
             ],
             "name": "Default profile",
