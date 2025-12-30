@@ -95,6 +95,10 @@
 (set-frame-parameter nil 'alpha 90) ; For current frame
 (add-to-list 'default-frame-alist '(alpha . 90)) ; For all new frames henceforth
 
+;; Disable menu-bar (items are concealed with the notch)
+;; https://discourse.doomemacs.org/t/how-to-disable-menu-bar-in-macos/4526/2
+(menu-bar-mode 0)
+
 ;; Disable confirmation on exit
 ;; https://github.com/hlissner/doom-emacs/issues/2688
 (setq! confirm-kill-emacs nil)
