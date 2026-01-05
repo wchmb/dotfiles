@@ -179,12 +179,13 @@
   :init
   (setq! which-key-idle-delay 0.1) ; Faster popup. Must be set before mode activates.
   :config
-  ;; Remove "evil-" prefix, it's too verbose
+  ;; Truncate "evil-" prefixes
   (setq! which-key-allow-multiple-replacements t)
   (pushnew!
    which-key-replacement-alist
-   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◀\\1"))
-   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◁\\1"))))
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "..\\1"))   ; Generic evil-
+   '(("" . "\\`evil-window-\\([^ -]+\\)") . (nil . "..\\1"))         ; Window commands: evil-window-
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "..\\1")))) ; Evilem motions under `g s'
 
 
 ;;; :ui doom-dashboard
