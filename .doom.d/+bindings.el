@@ -1,9 +1,5 @@
 ;;; +bindings.el -*- lexical-binding: t; -*-
 
-(map! :leader
-      (:prefix "f"
-       :desc "Find alternate (.h/.c)" "a"  #'ff-find-other-file))
-
 ;; Bind C-w as the window switching prefix in insert mode
 (map! :i "C-w" evil-window-map   ; Usually defaults to `evil-delete-backward-word'
       ;; Must explicitly override the higher-priority vterm/eshell maps
