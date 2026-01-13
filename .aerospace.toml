@@ -106,39 +106,44 @@ automatically-unhide-macos-hidden-apps = false
     # alt-w = 'workspace ○●○○'
     # alt-e = 'workspace ○○●○'
     # alt-r = 'workspace ○○○●'
-    alt-left   = 'workspace --wrap-around prev'
-    alt-right  = 'workspace --wrap-around next'
-    alt-tab    = 'workspace-back-and-forth'
-
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
-
-    alt-shift-1 = 'move-node-to-workspace 1-Init'
-    alt-shift-2 = 'move-node-to-workspace 2-Comms'
-    alt-shift-3 = 'move-node-to-workspace 3-System'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9-Browse'
-    alt-shift-0 = 'move-node-to-workspace 0-Code'
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
-    alt-shift-left = 'move-node-to-monitor --focus-follows-window prev' # with arrows: like Win
-    alt-shift-right = 'move-node-to-monitor --focus-follows-window next'
     # https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    alt-shift-h = 'workspace --wrap-around prev'
+    alt-shift-l = 'workspace --wrap-around next'
+    alt-tab     = 'workspace-back-and-forth'
+
     # Move window
     # https://nikitabobko.github.io/AeroSpace/commands#move
+    alt-ctrl-h = 'move left'
+    alt-ctrl-j = 'move down'
+    alt-ctrl-k = 'move up'
+    alt-ctrl-l = 'move right'
+
     # Split window
     # https://nikitabobko.github.io/AeroSpace/commands#join-with
+    alt-ctrl-shift-h = 'join-with left'
+    alt-ctrl-shift-j = 'join-with down'
+    alt-ctrl-shift-k = 'join-with up'
+    alt-ctrl-shift-l = 'join-with right'
+
     # Move window to workspace
     # https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-ctrl-1 = 'move-node-to-workspace 1-Init'
+    alt-ctrl-2 = 'move-node-to-workspace 2-Comms'
+    alt-ctrl-3 = 'move-node-to-workspace 3-System'
+    alt-ctrl-4 = 'move-node-to-workspace 4'
+    alt-ctrl-5 = 'move-node-to-workspace 5'
+    alt-ctrl-6 = 'move-node-to-workspace 6'
+    alt-ctrl-7 = 'move-node-to-workspace 7'
+    alt-ctrl-8 = 'move-node-to-workspace 8'
+    alt-ctrl-9 = 'move-node-to-workspace 9-Browse'
+    alt-ctrl-0 = 'move-node-to-workspace 0-Code'
+
     # Move window to monitor
     # https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
+    alt-ctrl-left = 'move-node-to-monitor --focus-follows-window prev' # with arrows: like Win
+    alt-ctrl-right = 'move-node-to-monitor --focus-follows-window next'
     # Note: move-workspace-to-monitor has no effect if [workspace-to-monitor-force-assignment]
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-ctrl-tab = 'move-workspace-to-monitor --wrap-around next'
 
     # Change mode
     # https://nikitabobko.github.io/AeroSpace/commands#mode
@@ -153,11 +158,6 @@ automatically-unhide-macos-hidden-apps = false
     backspace = ['close-all-windows-but-current', 'mode main']
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
     #s = ['layout sticky tiling', 'mode main']
-
-    alt-shift-h = ['join-with left', 'mode main']
-    alt-shift-j = ['join-with down', 'mode main']
-    alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
 
     esc = ['reload-config', 'mode main']
     q   = 'mode main'
