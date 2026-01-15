@@ -39,15 +39,9 @@
                         ]
                     },
                     {
-                        "description": "[Built-in] left_shift + right_shift => caps_lock",
+                        "description": "[Any] left_shift + right_shift => caps_lock",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [{ "is_built_in_keyboard": true }],
-                                        "type": "device_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
@@ -59,12 +53,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [{ "is_built_in_keyboard": true }],
-                                        "type": "device_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": {
