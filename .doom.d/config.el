@@ -214,6 +214,10 @@
          centaur-tabs-height 13)
   (centaur-tabs-mode t))
 
+
+;;; :ui window-select
+(after! ace-window
+  (setq! aw-ignore-on nil)) ; Do not ignore any buffer
 ;;; :term
 ;; Show modeline in eshell and vterm modes (hooks added in their own module's config)
 (after! eshell
