@@ -140,7 +140,6 @@
 ;;;
 
 ;;; Buit-ins
-(after! dired
 
 ;; https://laurencewarne.github.io/emacs/programming/2022/12/26/exploring-proced.html
 (use-package! proced
@@ -218,6 +217,12 @@
 ;;; :ui window-select
 (after! ace-window
   (setq! aw-ignore-on nil)) ; Do not ignore any buffer
+;;; :emacs dired
+(after! dired
+  (setq! dired-kill-when-opening-new-dired-buffer t)) ; Kill dired buffers immediately
+(after! dired-x
+  (remove-hook! 'dired-mode-hook #'dired-omit-mode)) ; Show all
+
 ;;; :term
 ;; Show modeline in eshell and vterm modes (hooks added in their own module's config)
 (after! eshell
