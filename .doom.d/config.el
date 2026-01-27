@@ -89,13 +89,13 @@
 
 ;; Maximize frame initially
 ;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(pushnew! initial-frame-alist '(fullscreen . maximized))
 
 ;; Slightly transparent frames by default
 ;; https://kristofferbalintona.me/posts/202206071000/
 ;; M-x doom/set-frame-opacity ; Change current frame opacity interactively
 (set-frame-parameter nil 'alpha 90) ; For current frame
-(add-to-list 'default-frame-alist '(alpha . 90)) ; For all new frames henceforth
+(pushnew! default-frame-alist '(alpha . 90)) ; For all new frames henceforth
 
 ;; Disable menu-bar (items are concealed with the notch)
 ;; https://discourse.doomemacs.org/t/how-to-disable-menu-bar-in-macos/4526/2
@@ -324,7 +324,6 @@
          message-sendmail-f-is-evil t
          message-sendmail-extra-arguments '("--read-envelope-from") ; Choose the SMTP server according to the from field
          message-send-mail-function #'message-send-mail-with-sendmail)
-  ;; iCloud
   (set-email-account!
    "icloud"
    '((user-full-name         . "Alejandro Blasco")
@@ -335,7 +334,6 @@
      (mu4e-trash-folder      . "/icloud/Trash")
      (mu4e-refile-folder     . "/icloud/Refile"))
    t) ; Default/fallback account
-  ;; Gmail
   (set-email-account!
    "gmail"
    '((user-full-name         . "Alejandro Blasco")
@@ -348,10 +346,9 @@
   ;; Apply special integrations to the Google account
   (setq! +mu4e-gmail-accounts '(("alejandro@fasts3.io" . "/gmail"))) ; Set email and maildir
   ;; Bookmarks
-  (add-to-list 'mu4e-bookmarks
-               '("maildir:/icloud/INBOX" "Inbox - iCloud" ?i) t)
-  (add-to-list 'mu4e-bookmarks
-               '("maildir:/gmail/INBOX" "Inbox - Google" ?g) t)
+  (pushnew! mu4e-bookmarks
+            '("maildir:/gmail/INBOX" "Inbox - Google" ?g)
+            '("maildir:/icloud/INBOX" "Inbox - iCloud" ?i))
   ;; Cc/Bcc headers
   (add-hook! 'mu4e-compose-mode-hook
     (defun abm/mu4e-add-cc-bcc-headers ()
