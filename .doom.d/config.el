@@ -74,6 +74,7 @@
          (bg-prose-code bg-prose-block-contents)
          (fg-prose-verbatim magenta-intense)
          (fringe bg-main)
+         (cursor red-intense)
          (corfu-default bg-main))) ; Default is bg-dim: https://github.com/protesilaos/modus-themes/blob/main/modus-themes.el#L2051
 
 (setq! doom-theme 'modus-operandi)
@@ -82,8 +83,9 @@
 ;; then ESC 12 <j/k> gets you exactly where you think
 (setq! display-line-numbers-type 'relative)
 
-;; Display vertical sroll bars
-(scroll-bar-mode t)
+(scroll-bar-mode t) ; Display vertical sroll bars
+
+(blink-cursor-mode 1) ; Blink cursor
 
 ;; Maximize frame initially
 ;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
@@ -217,6 +219,7 @@
 ;;; :ui window-select
 (after! ace-window
   (setq! aw-ignore-on nil)) ; Do not ignore any buffer
+
 ;;; :emacs dired
 (after! dired
   (setq! dired-kill-when-opening-new-dired-buffer t)) ; Kill dired buffers immediately
@@ -277,9 +280,7 @@
          org-modern-replace-stars "◉○✸✧■□"
          org-modern-timestamp nil
          org-modern-table nil
-         org-modern-priority '((?A . "🔥🔥🔥")
-                               (?B . "🔥🔥")
-                               (?C . "🔥"))
+         org-modern-priority '((?A . "🔥🔥🔥") (?B . "🔥🔥") (?C . "🔥"))
          org-modern-progress nil
          org-modern-list nil
          org-modern-checkbox nil
