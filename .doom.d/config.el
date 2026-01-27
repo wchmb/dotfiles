@@ -318,7 +318,8 @@
          mu4e-update-interval 300 ; Automatic fetching
          ;; Tweak when mu4e should guess or ask the correct context
          mu4e-context-policy 'pick-first
-         mu4e-compose-context-policy 'ask)
+         mu4e-compose-context-policy 'ask
+         mu4e-headers-date-format "%d/%m/%Y")
   (setq! sendmail-program (or (executable-find "msmtp") "/opt/homebrew/bin/msmtp")
          message-sendmail-f-is-evil t
          message-sendmail-extra-arguments '("--read-envelope-from") ; Choose the SMTP server according to the from field
