@@ -203,9 +203,6 @@
          doom-modeline-major-mode-icon t) ; Display major-mode icon
   ;; Doom adds a hook to enable filesize. I don't care
   (remove-hook! 'doom-modeline-mode-hook #'size-indication-mode)
-  ;; Do not hide modeline in popups
-  ;; https://github.com/doomemacs/doomemacs/blob/master/modules/ui/popup/README.org#disabling-hidden-mode-line-in-popups
-  (remove-hook! '+popup-buffer-mode-hook #'+popup-set-modeline-on-enable-h))
 
 ;;; :ui tabs
 (after! centaur-tabs
