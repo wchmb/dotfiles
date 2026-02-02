@@ -223,5 +223,5 @@
        ;;literate
        (default
         +bindings
-        +gnupg
-        +smartparens))
+        ;+smartparens
+        +gnupg))
