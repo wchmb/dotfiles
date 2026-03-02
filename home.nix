@@ -43,6 +43,7 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/git/message.txt".source  = ./dotfiles/git-message.txt;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -73,4 +74,17 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+
+    settings = {
+      user.name  = "Alejandro Blaco";
+      user.email = "alebdm@icloud.com";
+
+      core.editor     = "vim";
+      pull.rebase     = true;
+      commit.template = "${config.xdg.configHome}/git/message.txt";
+    };
+  };
 }
