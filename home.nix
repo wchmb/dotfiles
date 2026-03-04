@@ -44,6 +44,7 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".config/git/message.txt".source  = ./dotfiles/git-message.txt;
+    ".config/zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -52,25 +53,38 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/alejandro/etc/profile.d/hm-session-vars.sh
-  #
+  # Environment variables
   home.sessionVariables = {
+    FLAKE_CONFIG_URI = "path:${config.home.homeDirectory}/nix#homeConfigurations.${config.home.username}";
     # EDITOR = "emacs";
+    HISTTIMEFORMAT        = "%F %T ";
+    HOMEBREW_NO_ENV_HINTS = "1";
+    SDKROOT = "\$(xcrun --sdk macosx --show-sdk-path)"; # Base SDK for building
   };
+
+  # Extra directories to prepend to PATH.
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.emacs.d/bin"
+    "${config.home.homeDirectory}/.docker/bin"
+    "${config.home.homeDirectory}/.local/bin"
+    "/Library/Developer/CommandLineTools/usr/bin"
+  ];
+
+  # Extra directories to prepend to arbitrary PATH-like environment variables (e.g.: MANPATH)
+  home.sessionSearchVariables = {
+    MANPATH = [
+      "${config.xdg.configHome}/.local/share/man"
+    ];
+    FPATH = [
+      "${config.home.homeDirectory}/.docker/completions"
+    ];
+  };
+
+  # Setup XDG base directory variables as environment variables
+  xdg.enable = true;
+
+  # Make programs use XDG directories whenever supported
+  home.preferXdgDirectories = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -86,5 +100,51 @@
       pull.rebase     = true;
       commit.template = "${config.xdg.configHome}/git/message.txt";
     };
+  };
+
+  programs.zsh = {
+    enable = true;
+
+    dotDir = "${config.xdg.configHome}/zsh";
+
+    autosuggestion.enable = true;
+
+    history = {
+      append     = true;
+      extended   = true;
+      ignoreDups = true;
+      size       = 10000;
+      save       = 10000;
+    };
+
+    setOptions = [
+      # Dirstack
+      "AUTO_PUSHD"         # cd pushes old dir onto the stack
+      "PUSHD_SILENT"       # push silently
+      "PUSHD_TO_HOME"      # pushd with no args → pushd $HOME
+      "PUSHD_IGNORE_DUPS"  # don't push the same dir twice
+
+      # Other
+      "CORRECT_ALL"          # spelling correction for commands and args
+      "EXTENDED_GLOB"        # treat #, ~, ^ as glob patterns
+      "NOMATCH"              # error if glob has no matches
+      "INTERACTIVE_COMMENTS" # allow # comments in interactive shell
+      "LONG_LIST_JOBS"       # display PID when suspending processes
+      "NOTIFY"               # report background job status immediately
+      "HASH_LIST_ALL"        # hash entire command path on completion
+      "COMPLETE_IN_WORD"     # complete not just at end of word
+      "NO_HUP"               # don't SIGHUP background jobs on exit
+      "NO_BEEP"              # no beep
+    ];
+
+    shellAliases = {
+      mkcd = "mkdir --parents $1 && cd $1";
+      dot  = "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
+    };
+
+    initContent = ''
+      compdef dot=git # enable git completions for the dot alias
+      source "${config.xdg.configHome}/zsh/functions.sh"
+    '';
   };
 }
