@@ -1,0 +1,143 @@
+# iCloud {{{
+IMAPAccount icloud
+Host imap.mail.me.com
+User alebdm
+PassCmd "security find-generic-password -s mu4e-icloud -a alebdm -w"
+Port 993
+TLSType IMAPS
+TLSVersions +1.3
+AuthMechs PLAIN
+SystemCertificates no
+CertificateFile /etc/ssl/cert.pem
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+SubFolders Verbatim
+Path ~/mail/icloud/
+Inbox ~/mail/icloud/INBOX
+
+Channel icloud-default
+Far :icloud-remote:
+Near :icloud-local:
+Patterns * !Deleted* !Trash !Sent* !Junk !Spam !Archive !Refile
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-sent
+Far :icloud-remote:"Sent Messages"
+Near :icloud-local:Sent
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-spam
+Far :icloud-remote:Junk
+Near :icloud-local:Spam
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-trash
+Far :icloud-remote:"Deleted Messages"
+Near :icloud-local:Trash
+Create Near
+Expunge Both
+SyncState *
+
+Channel icloud-refile
+Far :icloud-remote:Archive
+Near :icloud-local:Refile
+Create Near
+Expunge Both
+SyncState *
+
+Group icloud
+Channel icloud-sent
+Channel icloud-spam
+Channel icloud-trash
+Channel icloud-refile
+Channel icloud-default
+# }}}
+
+# Gmail {{{
+IMAPAccount gmail
+Host imap.gmail.com
+User alejandro@fasts3.io
+PassCmd "security find-generic-password -s mu4e-gmail -a alejandro -w"
+Port 993
+TLSType IMAPS
+TLSVersions +1.3
+AuthMechs PLAIN
+SystemCertificates no
+CertificateFile /etc/ssl/cert.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/INBOX
+
+Channel gmail-inbox
+Far :gmail-remote:
+Near :gmail-local:
+Patterns INBOX
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-starred
+Far :gmail-remote:"[Gmail]/Starred"
+Near :gmail-local:Starred
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-drafts
+Far :gmail-remote:"[Gmail]/Drafts"
+Near :gmail-local:Drafts
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:Sent
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-spam
+Far :gmail-remote:"[Gmail]/Spam"
+Near :gmail-local:Spam
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-trash
+Far :gmail-remote:"[Gmail]/Trash"
+Near :gmail-local:Trash
+Create Near
+Expunge Both
+SyncState *
+
+Channel gmail-refile
+Far :gmail-remote:"[Gmail]/All Mail"
+Near :gmail-local:Refile
+Create Near
+Expunge Both
+SyncState *
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-starred
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-spam
+Channel gmail-trash
+Channel gmail-refile
+# }}}

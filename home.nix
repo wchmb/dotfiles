@@ -17,10 +17,12 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # #pkgs.hello
+  home.packages = with pkgs; [
+    # TODO move to module/emacs.nix
+    # email
+    isync
+    msmtp
+    mu
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -43,8 +45,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/git/message.txt".source  = ./dotfiles/git-message.txt;
-    ".config/zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -80,8 +80,14 @@
     ];
   };
 
-  # Setup XDG base directory variables as environment variables
+  # Setup XDG
   xdg.enable = true;
+  xdg.configFile = {
+    "git/message.txt".source  = ./dotfiles/git-message.txt;
+    "zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
+    "isyncrc".source          = ./dotfiles/mbsyncrc;
+    "msmtp/config".source     = ./dotfiles/msmtprc;
+  };
 
   # Make programs use XDG directories whenever supported
   home.preferXdgDirectories = true;
