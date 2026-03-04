@@ -18,6 +18,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # cli tools
+    less
+    wget
     # TODO move to module/emacs.nix
     # email
     isync
@@ -57,9 +60,12 @@
   home.sessionVariables = {
     FLAKE_CONFIG_URI = "path:${config.home.homeDirectory}/nix#homeConfigurations.${config.home.username}";
     # EDITOR = "emacs";
-    HISTTIMEFORMAT        = "%F %T ";
+    HISTTIMEFORMAT = "%F %T ";
     HOMEBREW_NO_ENV_HINTS = "1";
+    LESSHISTFILE = "${config.xdg.stateHome}/less/history";
+    PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
     SDKROOT = "\$(xcrun --sdk macosx --show-sdk-path)"; # Base SDK for building
+    WGETRC = "${config.xdg.configHome}/wgetrc";
   };
 
   # Extra directories to prepend to PATH.
@@ -87,6 +93,15 @@
     "zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
     "isyncrc".source          = ./dotfiles/mbsyncrc;
     "msmtp/config".source     = ./dotfiles/msmtprc;
+    "wgetrc".text = ''
+      hsts-file = ${config.xdg.stateHome}/wget/history
+    '';
+  };
+  xdg.stateFile = {
+    # Create a .keep file, which forces the directory to be created
+    "less/.keep".text   = "";
+    "python/.keep".text = "";
+    "wget/.keep".text   = "";
   };
 
   # Make programs use XDG directories whenever supported
