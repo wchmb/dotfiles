@@ -63,12 +63,12 @@
 
   # Environment variables
   home.sessionVariables = {
-    FLAKE_CONFIG_URI = "path:${config.home.homeDirectory}/nix#homeConfigurations.${config.home.username}";
     # EDITOR = "emacs";
     HISTTIMEFORMAT = "%F %T ";
     HOMEBREW_NO_ENV_HINTS = "1";
     LESSHISTFILE = "${config.xdg.stateHome}/less/history";
     PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
+    FLAKE_CONFIG_URI = "path:${config.home.homeDirectory}/nix#darwinConfigurations.${config.home.username}";
     SDKROOT = "\$(xcrun --sdk macosx --show-sdk-path)"; # Base SDK for building
     WGETRC = "${config.xdg.configHome}/wgetrc";
   };
@@ -111,9 +111,6 @@
 
   # Make programs use XDG directories whenever supported
   home.preferXdgDirectories = true;
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
