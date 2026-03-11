@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  # macOS required settings
+  # Required default settings
   # https://nikitabobko.github.io/AeroSpace/guide.html#a-note-on-displays-have-separate-spaces
   # https://nikitabobko.github.io/AeroSpace/guide.html#a-note-on-mission-control
   targets.darwin.defaults = {
@@ -26,7 +26,7 @@
 
       automatically-unhide-macos-hidden-apps = false;
 
-      default-root-container-layout      = "tiles";
+      default-root-container-layout      = "tiles"; # tiles | accordion
       default-root-container-orientation = "auto";
 
       enable-normalization-flatten-containers                         = true;
@@ -119,13 +119,14 @@
           alt-ctrl-shift-l = "join-with right";
 
           # Windows layouts
+          alt-enter  = "layout floating tiling"; # toggles floating/tiling
           alt-slash  = "layout tiles horizontal vertical";
           alt-comma  = "layout accordion horizontal vertical";
           alt-f      = "fullscreen --no-outer-gaps";
 
           # Launch terminal
-          #alt-enter = "exec-and-forget osascript -e '\n    tell application \"Terminal\"\n        do script\n        activate\n    end tell'\n    ";
-          alt-enter = "exec-and-forget osascript -e 'tell application \"Terminal\" to do script' -e 'tell application \"Terminal\" to activate'";
+          alt-t = "exec-and-forget osascript -e 'tell application \"Terminal\" to do script' -e 'tell application \"Terminal\" to activate'";
+
           # Mode switches
           alt-r               = "mode resize";
           alt-shift-semicolon = "mode service";
@@ -138,7 +139,6 @@
           l     = "resize smart +50";
           minus = "resize smart -50";
           equal = "resize smart +50";
-          esc   = "mode main";
           q     = "mode main";
         };
 
@@ -153,21 +153,20 @@
 
       # Get app-id with: aerospace list-apps
       on-window-detected = [
-        { "if".app-id = "com.apple.Notes";             run = "move-node-to-workspace 1-Init"; }
-        { "if".app-id = "com.apple.Music";             run = "move-node-to-workspace 1-Init"; }
+        #{ "if".app-id = "com.apple.Music";             run = "move-node-to-workspace 1-Init"; }
         { "if".app-name-regex-substring = "YT Music";  run = "move-node-to-workspace 1-Init"; }
-        { "if".app-id = "org.apple.mail";              run = "move-node-to-workspace 2-Comms"; }
+        { "if".app-id = "com.apple.mail";              run = "move-node-to-workspace 2-Comms"; }
         { "if".app-name-regex-substring = "Messages";  run = "move-node-to-workspace 2-Comms"; }
         { "if".app-id = "net.whatsapp.WhatsApp";       run = "move-node-to-workspace 2-Comms"; }
-        { "if".app-name-regex-substring = "FastS3";    run = "move-node-to-workspace 2-Comms"; }
-        { "if".app-id = "org.pqrs.Karabiner-Elements.Settings"; run = "move-node-to-workspace 3-System"; }
-        { "if".app-id = "com.apple.shortcuts";         run = "move-node-to-workspace 3-System"; }
+        { "if".app-name-regex-substring = "Chat";      run = "move-node-to-workspace 2-Comms"; }
         { "if".app-id = "com.apple.Safari";            run = "move-node-to-workspace 9-Browse"; }
         { "if".app-id = "org.gnu.Emacs";               run = "move-node-to-workspace 0-Code"; }
+        { "if".app-id = "com.apple.Terminal";          run = "move-node-to-workspace 0-Code"; }
         { "if".app-name-regex-substring = "AI Studio"; run = "move-node-to-workspace 0-Code"; }
-        { "if".app-id = "com.apple.systempreferences"; run = "layout floating"; }
-        { "if".app-id = "com.apple.finder";            run = "layout floating"; }
-        { "if".app-id = "com.apple.ActivityMonitor";   run = "layout floating"; }
+        { "if".app-name-regex-substring = "Perplexit"; run = "move-node-to-workspace 0-Code"; }
+
+        # Everythig else floating
+        { run = "layout floating"; }  # catch-all
       ];
     };
   };
