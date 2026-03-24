@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./modules/emacs.nix
   ];
 
   home.username = "alejandro";
@@ -13,11 +14,6 @@
     # cli tools
     less
     wget
-    # TODO move to module/emacs.nix
-    # email
-    isync
-    msmtp
-    mu
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -62,7 +58,6 @@
 
   # Extra directories to prepend to PATH.
   home.sessionPath = [
-    "${config.home.homeDirectory}/.emacs.d/bin"
     "${config.home.homeDirectory}/.docker/bin"
     "${config.home.homeDirectory}/.local/bin"
   ];
