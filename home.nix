@@ -65,7 +65,6 @@
     "${config.home.homeDirectory}/.emacs.d/bin"
     "${config.home.homeDirectory}/.docker/bin"
     "${config.home.homeDirectory}/.local/bin"
-    "/Library/Developer/CommandLineTools/usr/bin"
   ];
 
   # Extra directories to prepend to arbitrary PATH-like environment variables (e.g.: MANPATH)
