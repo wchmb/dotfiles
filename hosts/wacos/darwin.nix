@@ -6,13 +6,15 @@
   # Required to know which user to act on behalf of since activation now runs as root
   system.primaryUser = "alejandro";
 
-  # Original version, do not change
+  # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-system.stateVersion
   system.stateVersion = 5;
 
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     config.allowUnfree = true;
   };
+
+  # services.karabiner-elements.enable = true;
 
   users.users.alejandro = {
     name = "alejandro";
