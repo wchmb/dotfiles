@@ -10,11 +10,14 @@
 # type can be:
 # - feat     (new feature)
 # - fix      (bug fix)
-# - docs     (changes to documentation)
+# - perf     (performance improvement)
+# - tidy     (refactoring production code)
 # - style    (formatting, missing semi colons, etc; no code change)
-# - refactor (refactoring production code)
-# - test     (adding missing tests, refactoring tests; no production code change)
-# - chore    (updating grunt tasks etc; no production code change)
+# - test     (adding or refactoring tests; no production code change)
+# - docs     (changes to documentation)
+# - chore    (grunt tasks, update depencencies, build tools, etc)
+# - cicd     (CI/CD configuration)
+# - undo     (rollback, revert a previous commit)
 #
 # <scope>   is just the scope of the change. Something like (admin) or (teacher).
 # <Subject> should use impertivite tone and say what you did.
