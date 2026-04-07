@@ -46,14 +46,14 @@
 
   # Environment variables
   home.sessionVariables = {
-    # EDITOR = "emacs";
-    HISTTIMEFORMAT = "%F %T ";
-    HOMEBREW_NO_ENV_HINTS = "1";
-    LESSHISTFILE = "${config.xdg.stateHome}/less/history";
-    PYTHON_HISTORY = "${config.xdg.stateHome}/python/history";
     FLAKE_CONFIG_URI = "path:${config.home.homeDirectory}/nix#darwinConfigurations.${config.home.username}";
-    SDKROOT = "\$(xcrun --sdk macosx --show-sdk-path)"; # Base SDK for building
+
+    EDITOR = "emacs";
+    HISTTIMEFORMAT = "%F %T ";
+    LESSHISTFILE = "${config.xdg.stateHome}/less-hst";
+    PYTHON_HISTORY = "${config.xdg.stateHome}/python-hst";
     WGETRC = "${config.xdg.configHome}/wgetrc";
+    SDKROOT = "\$(xcrun --sdk macosx --show-sdk-path)"; # Base SDK for building
   };
 
   # Extra directories to prepend to PATH.
@@ -64,30 +64,8 @@
 
   # Extra directories to prepend to arbitrary PATH-like environment variables (e.g.: MANPATH)
   home.sessionSearchVariables = {
-    MANPATH = [
-      "${config.xdg.configHome}/.local/share/man"
-    ];
-    FPATH = [
-      "${config.home.homeDirectory}/.docker/completions"
-    ];
-  };
-
-  # Setup XDG
-  xdg.enable = true;
-  xdg.configFile = {
-    "git/message.txt".source  = ./dotfiles/git-message.txt;
-    "zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
-    "isyncrc".source          = ./dotfiles/mbsyncrc;
-    "msmtp/config".source     = ./dotfiles/msmtprc;
-    "wgetrc".text = ''
-      hsts-file = ${config.xdg.stateHome}/wget/history
-    '';
-  };
-  xdg.stateFile = {
-    # Create a .keep file, which forces the directory to be created
-    "less/.keep".text   = "";
-    "python/.keep".text = "";
-    "wget/.keep".text   = "";
+    MANPATH = [ "${config.xdg.configHome}/.local/share/man" ];
+    FPATH = [ "${config.home.homeDirectory}/.docker/completions" ];
   };
 
   # Make programs use XDG directories whenever supported
@@ -151,4 +129,18 @@
       source "${config.xdg.configHome}/zsh/functions.sh"
     '';
   };
+  #programs.less.enable = true;
+
+  xdg.enable = true; # sets $XDG_XXX_HOME env vars
+
+  xdg.configFile = {
+    "git/message.txt".source  = ./dotfiles/git-message.txt;
+    "zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
+    "isyncrc".source          = ./dotfiles/mbsyncrc;
+    "msmtp/config".source     = ./dotfiles/msmtprc;
+    "wgetrc".text = ''
+      hsts-file = ${config.xdg.stateHome}/wget-hst
+    '';
+  };
+
 }
