@@ -15,13 +15,13 @@
                                     "key_code": "left_control",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_control" }],
-                                "to_if_alone": [
+                                "to": [
                                     {
-                                        "hold_down_milliseconds": 200,
-                                        "key_code": "escape"
+                                        "key_code": "left_control",
+                                        "lazy": true
                                     }
                                 ],
+                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
@@ -220,19 +220,6 @@
                     "ignore": false
                 },
                 {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
-                            "to": [{ "key_code": "caps_lock" }]
-                        },
-                        {
-                            "from": { "key_code": "escape" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                        }
-                    ]
-                },
-                {
                     "identifiers": {
                         "is_pointing_device": true,
                         "product_id": 50479,
@@ -255,6 +242,14 @@
                         "vendor_id": 13
                     },
                     "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "vendor_id": 2007
+                    },
+                    "ignore": false
                 }
             ],
             "name": "Default profile",
