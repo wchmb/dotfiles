@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/emacs.nix
+    ./modules/claude.nix
   ];
 
   home.username = "alejandro";
