@@ -12,9 +12,30 @@
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    # cli tools
+    # CLI tools
+    fd
+    htop
+    jq
     less
+    openssl
+    ripgrep
+    sqlite
+    watch
     wget
+    wireguard-tools
+
+    # Dev
+    #binutils # already with Xcode CLT
+    cmake
+    glib
+    lmdb
+    nixfmt
+    wireshark
+
+    # Media
+    ffmpeg
+    mpv
+    yt-dlp
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
