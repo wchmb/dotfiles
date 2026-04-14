@@ -60,7 +60,8 @@
     clang-tools
 
     # :checkers spell
-    (aspellWithDicts (ds: with ds; [ en es ]))
+    # (aspellWithDicts (ds: with ds; [ en en-computers es ]))
+    (hunspellWithDicts (with pkgs.hunspellDicts; [ en-us es-es ]))
 
     # :lsp +booster
     emacs-lsp-booster
@@ -75,4 +76,8 @@
   fonts.fontconfig.enable = true;
 
   home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
+
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8"; # Hunspell uses LANG to determine the default dictionary
+  };
 }
