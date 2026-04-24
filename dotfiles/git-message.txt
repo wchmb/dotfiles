@@ -1,34 +1,44 @@
-# type(<scope>): <Subject>
-# |<----  Using a maximum of 50 characters  ---->|
+# <type>[<scope>][!]: <subject>
+# |<----          use max 50 chars           ---->|
 
-# <Body>
-# |<----   Try to limit each line to a maximum of 72 characters   ---->|
+# [body]
+# |<----             wrap body at 72 characters                    ---->|
 
-# <Footer>
+# [footer(s)]
 
 # --- COMMIT END ---
-# type can be:
+# <type>    can be:
 # - feat     (new feature)
 # - fix      (bug fix)
 # - perf     (performance improvement)
-# - tidy     (refactoring production code)
-# - style    (formatting, missing semi colons, etc; no code change)
-# - test     (adding or refactoring tests; no production code change)
-# - docs     (changes to documentation)
-# - chore    (grunt tasks, update depencencies, build tools, etc)
-# - cicd     (CI/CD configuration)
-# - undo     (rollback, revert a previous commit)
+# - refactor (clean code)
+# - style    (formatting)
+# - test     (tests)
+# - docs     (documentation)
+# - chore    (grunt tasks: tooling, housekeeping or setup)
+# - bump     (version bumps: release, tags or dependencies)
+# - cicd     (CI/CD)
+# - revert   (rollback)
+# - merge    (merge commit)
+# - wip      (work in progress; avoid on main/release branches)
 #
-# <scope>   is just the scope of the change. Something like (admin) or (teacher).
-# <Subject> should use impertivite tone and say what you did.
-# <Body>    should go into detail about changes made.
-# <Footer>  should contain links, articles, Github issue... (E.g: Github issue #23)
+# <scope>   describes the area affected, within parenthesis, e.g. (admin)
+# <subject> uses the imperative mood, is lowercase, and has no period.
+# !         marks a breaking change.
 #
-# Remember to:
-# - Capitalize the subject line
-# - Use the imperative mood in the subject line
-# - Do not end the subject line with a period
-# - Separate subject from body with a blank line
-# - Use the body to explain what and why vs. how
-# - Can use multiple lines with "-" for bullet points in body
-# --------------------
+# Body rules:
+# - Separate subject from body with one blank line
+# - Explain what changed and why, not how
+# - Wrap lines at 72 characters
+# - Use "-" for bullets when helpful
+#
+# Footer rules:
+# - Use footers for references or metadata, e.g. Refs: #23, Closes: #45
+# - Breaking changes may also be written as:
+#   BREAKING CHANGE: describe the incompatible change
+#
+# Remember:
+# - feat and fix map to SemVer intent
+# - Use ! or BREAKING CHANGE: for incompatible API changes
+# - Keep the first line short and specific
+# -----------------------------------------------------------------------
