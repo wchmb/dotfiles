@@ -61,7 +61,7 @@
 
     # :checkers spell
     # (aspellWithDicts (ds: with ds; [ en en-computers es ]))
-    (hunspellWithDicts (with pkgs.hunspellDicts; [ en-us es-es ]))
+    (hunspell.withDicts (dicts: with dicts; [ en-us es-es ]))
 
     # :lsp +booster
     emacs-lsp-booster
