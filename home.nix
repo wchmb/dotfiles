@@ -97,7 +97,7 @@
     enable = true;
 
     settings = {
-      user.name  = "Alejandro Blaco";
+      user.name  = "Alejandro Blasco";
       user.email = "alebdm@icloud.com";
 
       core.editor     = "vim";
