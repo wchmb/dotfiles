@@ -51,7 +51,7 @@
       };
 
       workspace-to-monitor-force-assignment = {
-        "0-Code"   = [ "main" "built-in" ];
+        "O-Code"   = [ "main" "built-in" ];
         "1-Init"   = [ "built-in" "secondary" ];
         "2-Comms"  = [ "built-in" "secondary" ];
         "3-System" = [ "built-in" "secondary" ];
@@ -75,7 +75,7 @@
           alt-7 = "workspace 7";
           alt-8 = "workspace 8";
           alt-9 = "workspace 9-Browse";
-          alt-0 = "workspace 0-Code";
+          alt-0 = "workspace O-Code";
           # alt-q = 'workspace ●○○○'
           # alt-w = 'workspace ○●○○'
           # alt-e = 'workspace ○○●○'
@@ -105,7 +105,7 @@
           alt-ctrl-7 = "move-node-to-workspace 7";
           alt-ctrl-8 = "move-node-to-workspace 8";
           alt-ctrl-9 = "move-node-to-workspace 9-Browse";
-          alt-ctrl-0 = "move-node-to-workspace 0-Code";
+          alt-ctrl-0 = "move-node-to-workspace O-Code";
           # To monitor
           # Note: move-workspace-to-monitor has no effect if workspace-to-monitor-force-assignment
           alt-ctrl-left  = "move-node-to-monitor --focus-follows-window prev";
@@ -160,10 +160,10 @@
         { "if".app-id = "net.whatsapp.WhatsApp";       run = "move-node-to-workspace 2-Comms"; }
         { "if".app-name-regex-substring = "Chat";      run = "move-node-to-workspace 2-Comms"; }
         { "if".app-id = "com.apple.Safari";            run = "move-node-to-workspace 9-Browse"; }
-        { "if".app-id = "org.gnu.Emacs";               run = "move-node-to-workspace 0-Code"; }
-        { "if".app-id = "com.apple.Terminal";          run = "move-node-to-workspace 0-Code"; }
-        { "if".app-name-regex-substring = "AI Studio"; run = "move-node-to-workspace 0-Code"; }
-        { "if".app-name-regex-substring = "Perplexit"; run = "move-node-to-workspace 0-Code"; }
+        { "if".app-id = "org.gnu.Emacs";               run = "move-node-to-workspace O-Code"; }
+        { "if".app-id = "com.apple.Terminal";          run = "move-node-to-workspace O-Code"; }
+        { "if".app-name-regex-substring = "AI Studio"; run = "move-node-to-workspace O-Code"; }
+        { "if".app-name-regex-substring = "Perplexit"; run = "move-node-to-workspace O-Code"; }
 
         # Everythig else floating
         { run = "layout floating"; }  # catch-all
