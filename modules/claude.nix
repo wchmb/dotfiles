@@ -34,6 +34,11 @@
       ];
     };
 
+    enabledPlugins = {
+      "clangd-lsp@claude-plugins-official"  = true;
+      "superpowers@claude-plugins-official" = true;
+    };
+
     sandbox.enabled     = true;
     attribution.disable = true;
   };
