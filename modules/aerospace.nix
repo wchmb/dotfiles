@@ -113,10 +113,10 @@
           alt-ctrl-tab   = "move-workspace-to-monitor --wrap-around next";
 
           # Windows joins
-          alt-ctrl-shift-h = "join-with left";
-          alt-ctrl-shift-j = "join-with down";
-          alt-ctrl-shift-k = "join-with up";
-          alt-ctrl-shift-l = "join-with right";
+          alt-shift-h = "join-with left";
+          alt-shift-j = "join-with down";
+          alt-shift-k = "join-with up";
+          alt-shift-l = "join-with right";
 
           # Windows layouts
           alt-enter  = "layout floating tiling"; # toggles floating/tiling
