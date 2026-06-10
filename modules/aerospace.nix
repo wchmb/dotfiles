@@ -80,9 +80,9 @@
           # alt-w = 'workspace ○●○○'
           # alt-e = 'workspace ○○●○'
           # alt-r = 'workspace ○○○●'
-          alt-shift-h = "workspace --wrap-around prev";
-          alt-shift-l = "workspace --wrap-around next";
-          alt-tab     = "workspace-back-and-forth";
+          alt-leftSquareBracket  = "workspace --wrap-around prev";
+          alt-rightSquareBracket = "workspace --wrap-around next";
+          alt-tab = "workspace-back-and-forth";
 
           # Windows focus
           alt-h = "focus --ignore-floating --boundaries-action wrap-around-the-workspace left";
