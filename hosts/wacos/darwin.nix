@@ -25,7 +25,6 @@
 
   # Apple system domain
   system.defaults = {
-    # dock
     dock.autohide = true;          # default: false
     dock.autohide-delay = 0.0;     # default: 0.5
     dock.show-recents = false;     # default: true
@@ -33,10 +32,8 @@
     dock.expose-group-apps = true; # group windows by application in Mission Control; default: false
     dock.tilesize = 64;            # default: 64
 
-    # spaces
     spaces.spans-displays = true; # separate spaces for each display; default: null
 
-    # finder
     finder.AppleShowAllExtensions = true;          # default: false
     finder.AppleShowAllFiles = true;               # default: false
     finder.ShowPathbar = true;                     # default: false
@@ -46,7 +43,6 @@
     finder.FXDefaultSearchScope = "SCsp";          # use previous seach scope; default: "SCev" (This Mac)
     finder.FXPreferredViewStyle = "Nlsv";          # list view; default: "icnv" (icon view)
 
-    # NSGlobalDomain
     NSGlobalDomain.KeyRepeat = 2;                                # default: 6
     NSGlobalDomain.InitialKeyRepeat = 15;                        # default: 25
     NSGlobalDomain.ApplePressAndHoldEnabled = false;             # default: true (accent menu displayed)
@@ -57,12 +53,19 @@
     #NSGlobalDomain."com.apple.swipescrolldirection" = false;    # default: true
     NSGlobalDomain.AppleICUForce24HourTime = true;               # default: false
 
-    # trackpad
     trackpad.TrackpadThreeFingerDrag = true; # default: false
     #trackpad.Clicking = true;               # default: false
     trackpad.TrackpadRightClick = true;      # default: false
 
-    # login
     loginwindow.GuestEnabled = false; # default: true
+  };
+
+  # The following are not yet covered by nix-darwin mantainers
+  system.defaults.CustomUserPreferences = {
+    "com.apple.desktopservices" = {
+      # Dont creates .DS_Store everywhere
+      DSDontWriteNetworkStores = true;
+      DSDontWriteUSBStores = true;
+    };
   };
 }
