@@ -40,6 +40,10 @@
     };
 
     sandbox.enabled     = true;
-    attribution.disable = true;
+    sandbox.enabled = true;
+    attribution = {
+      commit = "";
+      pr = "";
+    };
   };
 }
