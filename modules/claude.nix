@@ -8,16 +8,24 @@
   };
 
   xdg.configFile."claude/settings.json".text = builtins.toJSON {
-   env = {
+    theme = "auto";
+    autoUpdates = false;
+    cleanupPeriodDays = 7;
+    attribution = {
+      commit = "";
+      pr = "";
+    };
+
+    env = {
       DISABLE_TELEMETRY                        = "1";
       DISABLE_ERROR_REPORTING                  = "1";
       CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
       CLAUDE_CODE_DISABLE_AUTO_MEMORY          = "1";
       CLAUDE_CODE_SUBPROCESS_ENV_SCRUB         = "1";
+      DISABLE_AUTOUPDATER                      = "1";
     };
 
-    cleanupPeriodDays = 7;
-
+    sandbox.enabled = true;
     permissions = {
       deny = [
         "Read(./.env)"
@@ -37,13 +45,6 @@
     enabledPlugins = {
       "clangd-lsp@claude-plugins-official"  = true;
       "superpowers@claude-plugins-official" = true;
-    };
-
-    sandbox.enabled     = true;
-    sandbox.enabled = true;
-    attribution = {
-      commit = "";
-      pr = "";
     };
   };
 }
