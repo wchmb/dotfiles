@@ -93,6 +93,31 @@
   # Make programs use XDG directories whenever supported
   home.preferXdgDirectories = true;
 
+  programs.ssh = {
+    enable = true;
+    settings = {
+      # Personal GitHub
+      "github.com" = {
+        HostName       = "github.com";
+        User           = "git";
+        AddKeysToAgent = "yes";
+        IgnoreUnknown  = "UseKeychain";
+        IdentityFile   = "~/.ssh/id_alebdm@icloud.com";
+        IdentitiesOnly = true;
+      };
+      # Home Linux (warch)
+      "warch" = {
+        HostName = "192.168.1.200";
+        User     = "abm";
+      };
+      # HomeAssistant @ warch
+      "hass" = {
+        HostName = "192.168.1.100";
+        User     = "root";
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
 
