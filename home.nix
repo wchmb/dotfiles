@@ -95,7 +95,21 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false; # disable old default config values
     settings = {
+      # Default
+      "*" = {
+        ForwardAgent        = false;
+        AddKeysToAgent      = "no";
+        Compression         = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        HashKnownHosts      = false;
+        UserKnownHostsFile  = "~/.ssh/known_hosts";
+        ControlMaster       = "no";
+        ControlPath         = "~/.ssh/-%r@%n:%p";
+        ControlPersist      = "no";
+      };
       # Personal GitHub
       "github.com" = {
         HostName       = "github.com";
