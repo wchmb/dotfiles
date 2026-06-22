@@ -96,6 +96,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false; # disable old default config values
+    includes = [ "config.d/fasts3" ]; # relative to ~/.ssh
     settings = {
       # Default
       "*" = {
