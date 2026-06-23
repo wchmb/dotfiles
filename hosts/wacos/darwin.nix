@@ -68,4 +68,20 @@
       DSDontWriteUSBStores = true;
     };
   };
+
+  homebrew = {
+    enable = true;
+    brews = [
+      "container"
+      "mole"
+    ];
+    casks = [
+      "adguard"
+      "karabiner-elements"
+    ];
+    onActivation = {
+      autoUpdate = true;  # self-update
+      cleanup    = "zap"; # config is source of truth; removes anything not listed
+    };
+  };
 }
