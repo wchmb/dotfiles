@@ -78,6 +78,7 @@
     casks = [
       "adguard"
       "karabiner-elements"
+      "mac-mouse-fix@2"
     ];
     onActivation = {
       autoUpdate = true;  # self-update

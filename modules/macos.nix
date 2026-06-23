@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     #container
-    mos
     #subsurface
   ];
 
@@ -23,16 +22,4 @@
 #    PLIST="$HOME/Library/Preferences/com.apple.Terminal.plist"
 #    /usr/bin/plutil -replace "Window Settings.''${PROFILE}.useOptionAsMetaKey" -bool YES "''${PLIST}"
 #  '';
-
-  targets.darwin.defaults."com.caldis.Mos" = {
-    smooth  = 1;
-    reverse = false;
-    toggle  = 56;
-
-    speed    = 1;
-    duration = 4.5;
-    step     = 35;
-
-    hideStatusItem = 1;
-  };
 }
