@@ -48,29 +48,25 @@
     # Fonts
     fontconfig        # font detection
     et-book
+    symbola
     nerd-fonts.symbols-only
     nerd-fonts.fira-mono
 
-    # Module deps {{{
+    # Module deps
     # :tools lookup & :lang org +roam
     sqlite            # org-roam, :tools lookup
     graphviz          # org visualizations
-
     # :lang cc
     clang-tools
-
     # :checkers spell
     # (aspellWithDicts (ds: with ds; [ en en-computers es ]))
     (hunspell.withDicts (dicts: with dicts; [ en-us es-es ]))
-
     # :lsp +booster
     emacs-lsp-booster
-
     # :email mu43
     mu
     isync
     msmtp
-    # }}}
   ];
 
   fonts.fontconfig.enable = true;
