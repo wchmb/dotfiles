@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./modules/emacs.nix
-    ./modules/claude.nix
+    ./home/emacs.nix
+    ./home/claude.nix
   ];
 
   home.username = "alejandro";

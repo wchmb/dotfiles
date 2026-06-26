@@ -3,9 +3,9 @@
 {
   imports = [
     ../../home.nix
-    ../../modules/macos.nix
-    ../../modules/aerospace.nix
-    ../../modules/karabiner.nix
+    ../../home/macos.nix
+    ../../home/aerospace.nix
+    ../../home/karabiner.nix
   ];
 
   home.homeDirectory = "/Users/alejandro";
