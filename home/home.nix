@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./home/emacs.nix
-    ./home/claude.nix
+    ./emacs.nix
+    ./claude.nix
   ];
 
   home.username = "alejandro";
@@ -196,10 +196,10 @@
   xdg.enable = true; # sets $XDG_XXX_HOME env vars
 
   xdg.configFile = {
-    "git/message.txt".source  = ./dotfiles/git-message.txt;
-    "zsh/functions.sh".source = ./dotfiles/zsh-functions.sh;
-    "isyncrc".source          = ./dotfiles/mbsyncrc;
-    "msmtp/config".source     = ./dotfiles/msmtprc;
+    "git/message.txt".source  = ../dotfiles/git-message.txt;
+    "zsh/functions.sh".source = ../dotfiles/zsh-functions.sh;
+    "isyncrc".source          = ../dotfiles/mbsyncrc;
+    "msmtp/config".source     = ../dotfiles/msmtprc;
     "wgetrc".text = ''
       hsts-file = ${config.xdg.stateHome}/wget-hst
     '';

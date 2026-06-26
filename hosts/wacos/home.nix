@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../home.nix
+    ../../home/home.nix
     ../../home/macos.nix
     ../../home/aerospace.nix
     ../../home/karabiner.nix
