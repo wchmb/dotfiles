@@ -31,7 +31,7 @@
           {
             home-manager.useGlobalPkgs = true; # share nixpkgs with nix-darwin: do not build twice!
             home-manager.useUserPackages = true; # install to ~/Applications/Home Manager Apps
-            home-manager.users.alejandro = import ./hosts/wacos/home.nix;
+            home-manager.users.alejandro = import ./home/macos.nix;
           }
         ];
       };
@@ -39,12 +39,11 @@
       nixosConfigurations."warch" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/warch/linux.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.alejandro = import ./hosts/warch/home.nix;
+            home-manager.users.alejandro = import ./home/linux.nix;
           }
         ];
       };

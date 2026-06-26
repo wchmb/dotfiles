@@ -1,6 +1,14 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./home.nix
+    ./aerospace.nix
+    ./karabiner.nix
+  ];
+
+  home.homeDirectory = "/Users/alejandro";
+
   home.packages = with pkgs; [
     #container
     #subsurface
