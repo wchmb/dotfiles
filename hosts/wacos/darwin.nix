@@ -15,6 +15,9 @@
   };
 
   # services.karabiner-elements.enable = true;
+  services.aerospace = {
+    enable = true;
+  };
 
   users.users.alejandro = {
     name = "alejandro";

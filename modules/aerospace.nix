@@ -1,25 +1,8 @@
 { ... }:
 
 {
-  # Required default settings
-  # https://nikitabobko.github.io/AeroSpace/guide.html#a-note-on-displays-have-separate-spaces
-  # https://nikitabobko.github.io/AeroSpace/guide.html#a-note-on-mission-control
-  targets.darwin.defaults = {
-    "com.apple.spaces" = {
-      "spans-displays" = true;    # One space spans all displays
-    };
-    "com.apple.dock" = {
-      "expose-group-apps" = true; # Group windows by app in Mission Control
-    };
-  };
-
   programs.aerospace = {
     enable = true;
-
-    launchd = {
-      enable    = true;
-      keepAlive = true;  # default, can omit
-    };
 
     settings = {
       accordion-padding = 30;
