@@ -14,11 +14,6 @@
     config.allowUnfree = true;
   };
 
-  # services.karabiner-elements.enable = true;
-  services.aerospace = {
-    enable = true;
-  };
-
   users.users.alejandro = {
     name = "alejandro";
     home = "/Users/alejandro";
@@ -28,39 +23,39 @@
 
   # Apple system domain
   system.defaults = {
-    dock.autohide = true;          # default: false
+    dock.autohide = true;
     dock.autohide-delay = 0.0;     # default: 0.5
-    dock.show-recents = false;     # default: true
+    dock.show-recents = false;
     dock.mru-spaces = false;       # dont reorder spaces by most-recent-used; default: true
     dock.expose-group-apps = true; # group windows by application in Mission Control; default: false
     dock.tilesize = 64;            # default: 64
 
     spaces.spans-displays = true; # separate spaces for each display; default: null
 
-    finder.AppleShowAllExtensions = true;          # default: false
-    finder.AppleShowAllFiles = true;               # default: false
-    finder.ShowPathbar = true;                     # default: false
-    #finder.ShowStatusBar = true;                  # default: false
-    finder._FXSortFoldersFirst = true;             # default: false
-    finder.FXEnableExtensionChangeWarning = false; # default: true
-    finder.FXDefaultSearchScope = "SCsp";          # use previous seach scope; default: "SCev" (This Mac)
-    finder.FXPreferredViewStyle = "Nlsv";          # list view; default: "icnv" (icon view)
+    finder.AppleShowAllExtensions = true;
+    finder.AppleShowAllFiles = true;
+    finder.ShowPathbar = true;
+    #finder.ShowStatusBar = true;
+    finder._FXSortFoldersFirst = true;
+    finder.FXEnableExtensionChangeWarning = false;
+    finder.FXDefaultSearchScope = "SCsp"; # use previous seach scope; default: "SCev" (This Mac)
+    finder.FXPreferredViewStyle = "Nlsv"; # list view; default: "icnv" (icon view)
 
-    NSGlobalDomain.KeyRepeat = 2;                                # default: 6
-    NSGlobalDomain.InitialKeyRepeat = 15;                        # default: 25
-    NSGlobalDomain.ApplePressAndHoldEnabled = false;             # default: true (accent menu displayed)
-    NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;     # default: true
-    NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;   # default: true
-    NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false; # default: true
-    NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;  # default: true
-    #NSGlobalDomain."com.apple.swipescrolldirection" = false;    # default: true
-    NSGlobalDomain.AppleICUForce24HourTime = true;               # default: false
+    NSGlobalDomain.KeyRepeat = 2;                    # default: 6
+    NSGlobalDomain.InitialKeyRepeat = 15;            # default: 25
+    NSGlobalDomain.ApplePressAndHoldEnabled = false; # default: true (accent menu displayed)
+    NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+    NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+    NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+    NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
+    #NSGlobalDomain."com.apple.swipescrolldirection" = false;
+    NSGlobalDomain.AppleICUForce24HourTime = true;
 
-    trackpad.TrackpadThreeFingerDrag = true; # default: false
-    #trackpad.Clicking = true;               # default: false
-    trackpad.TrackpadRightClick = true;      # default: false
+    trackpad.TrackpadThreeFingerDrag = true;
+    #trackpad.Clicking = true;
+    trackpad.TrackpadRightClick = true;
 
-    loginwindow.GuestEnabled = false; # default: true
+    loginwindow.GuestEnabled = false;
   };
 
   # The following are not yet covered by nix-darwin mantainers
@@ -70,6 +65,11 @@
       DSDontWriteNetworkStores = true;
       DSDontWriteUSBStores = true;
     };
+  };
+
+  # services.karabiner-elements.enable = true;
+  services.aerospace = {
+    enable = true;
   };
 
   homebrew = {
