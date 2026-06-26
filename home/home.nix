@@ -143,6 +143,8 @@
       core.editor     = "vim";
       pull.rebase     = true;
       commit.template = "${config.xdg.configHome}/git/message.txt";
+
+      url."git@github-fasts3:Fasts3-io/".insteadOf = "git@github.com:Fasts3-io/";
     };
   };
 
