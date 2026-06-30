@@ -90,7 +90,7 @@
       "WireGuard" = 1451685025;
     };
     onActivation = {
-      autoUpdate = true;  # self-update
+      autoUpdate = false; # do not self-update
       cleanup    = "zap"; # config is source of truth; removes anything not listed
     };
   };
