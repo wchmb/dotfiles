@@ -83,6 +83,12 @@
       "karabiner-elements"
       "mac-mouse-fix@2"
     ];
+    masApps = {
+      "Numbers" = 361304891;
+      "GarageBand" = 682658836;
+      "CSE" = 6445840140;
+      "WireGuard" = 1451685025;
+    };
     onActivation = {
       autoUpdate = true;  # self-update
       cleanup    = "zap"; # config is source of truth; removes anything not listed
